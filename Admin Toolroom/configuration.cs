@@ -28,6 +28,7 @@ namespace Admin_Toolroom
             this.txtRdpPath.Text = Properties.Settings.Default.sRDPTxtPath;
             this.txtDC.Text = Properties.Settings.Default.sDC;
             this.txtDefaultPassword.Text = Properties.Settings.Default.sDefaultPassword;
+            this.txtUserDomainOU.Text = Properties.Settings.Default.sUserDomainOU;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,12 +49,12 @@ namespace Admin_Toolroom
                 Properties.Settings.Default.sRDPTxtPath = txtRdpPath.Text;
                 Properties.Settings.Default.sDC = txtDC.Text;
                 Properties.Settings.Default.sDefaultPassword = txtDefaultPassword.Text;
-
+                Properties.Settings.Default.sUserDomainOU = txtUserDomainOU.Text;
 
                 Properties.Settings.Default.Save();
                 ConfigurationManager.RefreshSection("appSettings");
 
-                
+                this.Close();
 
             }
 
@@ -67,6 +68,8 @@ namespace Admin_Toolroom
             {
                 path = file.FileName;
                 txtRdpPath.Text = path.ToString();
+
+                
             }
         }
 

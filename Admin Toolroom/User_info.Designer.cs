@@ -75,6 +75,7 @@
             this.JoinToDomainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.slanjePorukaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.remoteAssistanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -120,21 +121,22 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.unlockAccountToolStripMenuItem,
-            this.resetPasswordToolStripMenuItem});
+            this.resetPasswordToolStripMenuItem,
+            this.moveUserToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 52);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(188, 110);
             // 
             // unlockAccountToolStripMenuItem
             // 
             this.unlockAccountToolStripMenuItem.Name = "unlockAccountToolStripMenuItem";
-            this.unlockAccountToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.unlockAccountToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.unlockAccountToolStripMenuItem.Text = "Unlock Account";
             this.unlockAccountToolStripMenuItem.Click += new System.EventHandler(this.unlockAccountToolStripMenuItem_Click);
             // 
             // resetPasswordToolStripMenuItem
             // 
             this.resetPasswordToolStripMenuItem.Name = "resetPasswordToolStripMenuItem";
-            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.resetPasswordToolStripMenuItem.Text = "Reset Password";
             this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
             // 
@@ -543,6 +545,13 @@
             this.remoteAssistanceToolStripMenuItem.Text = "Remote Assistance";
             this.remoteAssistanceToolStripMenuItem.Click += new System.EventHandler(this.remoteAssistanceToolStripMenuItem_Click);
             // 
+            // moveUserToolStripMenuItem
+            // 
+            this.moveUserToolStripMenuItem.Name = "moveUserToolStripMenuItem";
+            this.moveUserToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.moveUserToolStripMenuItem.Text = "Move User";
+            this.moveUserToolStripMenuItem.Click += new System.EventHandler(this.moveUserToolStripMenuItem_Click);
+            // 
             // User_info
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -616,5 +625,6 @@
         private System.Windows.Forms.ToolStripMenuItem resetPasswordToolStripMenuItem;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDC;
+        private System.Windows.Forms.ToolStripMenuItem moveUserToolStripMenuItem;
     }
 }

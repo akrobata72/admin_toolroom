@@ -79,7 +79,7 @@ namespace Admin_Toolroom
                 {
                     lstRacunara1.Focus();
                     lstRacunara1.SelectedIndex = 0;
-                } 
+                }
             }
 
 
@@ -100,7 +100,7 @@ namespace Admin_Toolroom
             {
                 ManagementScope managementScope;
 
-               foreach (string computer in lstRacunara1.Items)
+                foreach (string computer in lstRacunara1.Items)
                 {
                     //MessageBox.Show(computer);
                     try
@@ -117,12 +117,12 @@ namespace Admin_Toolroom
                         managementScope.Connect();
                         //MessageBox.Show(computer + " - Connected", computer + " - WMI obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        object[] ProcessToRun = {"msg * /time:"+txtExpireTime.Text+" "+txtPopupMsg.Text};
+                        object[] ProcessToRun = { "msg * /time:" + txtExpireTime.Text + " " + txtPopupMsg.Text };
                         ManagementClass networkTask = new ManagementClass(managementScope, new ManagementPath("Win32_Process"), new ObjectGetOptions());
                         object popup = networkTask.InvokeMethod("Create", ProcessToRun);
                         //MessageBox.Show(popup.ToString());
                         uint popup1 = (uint)(popup);
-                        if (popup1==0)
+                        if (popup1 == 0)
                         {
                             //MessageBox.Show(computer + " - Poruka je poslata", computer + " - WMI", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             lstLog.Items.Add(computer + " - Message sent -   Date:  " + DateTime.Now.ToShortDateString() + ";   Time: " + DateTime.Now.ToShortTimeString());
@@ -139,6 +139,94 @@ namespace Admin_Toolroom
                         lstLog.Items.Add(computer + " - WMI connection ERROR -   Date:  " + DateTime.Now.ToShortDateString() + ";   Time: " + DateTime.Now.ToShortTimeString());
                     }
                 }
+            }
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Getting Text from Clip board
+                string s = Clipboard.GetText();
+                //Parsing criteria: New Line
+                string[] lines = s.Split('\n');
+                foreach (string ln in lines)
+                {
+                    lstRacunara1.Items.Add(ln.Trim());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lstRacunara1.SelectedItems.Clear();
+                for (int i = 0; i < lstRacunara1.Items.Count; i++)
+                {
+                    lstRacunara1.SetSelected(i, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void clearAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lstRacunara1.Items.Clear();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (object row in lstRacunara1.SelectedItems)
+                {
+                    sb.Append(row.ToString());
+                    sb.AppendLine();
+                }
+                sb.Remove(sb.Length - 1, 1); // Just to avoid copying last empty row
+                Clipboard.SetData(System.Windows.Forms.DataFormats.Text, sb.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+                // we use this collection to keep all the Selected Items
+                List<object> selectedItemList = new List<object>();
+                foreach (object row in lstRacunara1.SelectedItems)
+                {
+                    sb.Append(row.ToString());
+                    sb.AppendLine();
+
+                    // Keep on adding selected item into a new List of Object
+                    selectedItemList.Add(row);
+                }
+                sb.Remove(sb.Length - 1, 1);    // Just to avoid copying last empty row                
+                Clipboard.SetData(System.Windows.Forms.DataFormats.Text, sb.ToString());
+                // Removing selected items from the ListBox
+                foreach (object ln in selectedItemList)
+                {
+                    lstRacunara1.Items.Remove(ln);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

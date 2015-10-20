@@ -10,6 +10,7 @@ using System.DirectoryServices.AccountManagement;
 using System.DirectoryServices;
 
 
+
 namespace Admin_Toolroom
 {
     public partial class User_info : Form
@@ -20,7 +21,7 @@ namespace Admin_Toolroom
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
             this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
-            this.txtLDAP.Text = Properties.Settings.Default.sLdapPath;
+            this.txtLDAP.Text = Properties.Settings.Default.sUserDomainOU;
             this.txtDC.Text = Properties.Settings.Default.sDC;
 
         }
@@ -289,19 +290,38 @@ namespace Admin_Toolroom
                 return;
             }
 
-            string l = lstResults.SelectedItem.ToString();
+                string l = lstResults.SelectedItem.ToString();
                 string dc = txtDC.Text;
                 string pwd = txtDomainAdminPwd.Text;
                 string domain = txtDomainName.Text;
                 string admin = txtDomainAdminUser.Text;
-
-            
+                            
 
             Chg_pass frm = new Chg_pass(l, dc, pwd, domain,admin);
             frm.Show();
 
         }
+
+        private void moveUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lstResults.SelectedItem == null)
+            {
+                MessageBox.Show(this, "Select user first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            string l = lstResults.SelectedItem.ToString();
+            string dc = txtDC.Text;
+            string pwd = txtDomainAdminPwd.Text;
+            string domain = txtDomainName.Text;
+            string admin = txtDomainAdminUser.Text;
+            string dname = lblSAMAccountName.Text;
+
+            MoveUser frm = new MoveUser(l, dc, pwd, domain, admin, dname);
+            frm.Show();
+
         }
+    }
     }
        
 
