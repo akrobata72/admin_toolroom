@@ -53,8 +53,8 @@ namespace Admin_Toolroom
 
                 Properties.Settings.Default.Save();
                 ConfigurationManager.RefreshSection("appSettings");
-
-                this.Close();
+                Application.Restart();
+                //this.Close();
 
             }
 

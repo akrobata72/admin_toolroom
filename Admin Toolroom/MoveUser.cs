@@ -56,7 +56,7 @@ namespace Admin_Toolroom
         {
             if (cmbOU.SelectedItem != null)
             {
-
+                
                 string userOU = "LDAP://" + lblDC.Text + @"/" + cmbOU.SelectedItem.ToString();
                 string moveUser = lblDName.Text.ToString();
 
@@ -81,14 +81,15 @@ namespace Admin_Toolroom
                         DirectoryEntry moved = new DirectoryEntry(t);
                         //MessageBox.Show(t);
                         //MessageBox.Show(userOU);
-                        moved.MoveTo(new DirectoryEntry(userOU,lblAdminUser.Text,lblPwd.Text,AuthenticationTypes.Secure));
+                        moved.MoveTo(new DirectoryEntry(userOU, lblAdminUser.Text, lblPwd.Text, AuthenticationTypes.Secure));
                         moved.CommitChanges();
                         moved.Close();
-                     //MessageBox.Show(result.Properties["distinguishedName"][0].ToString());
+                     MessageBox.Show("USER ACCOUNT has been moved successfully!" + Environment.NewLine + result.Properties["distinguishedName"][0].ToString());
+                        this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Greška, operacija nije uspela!");
+                        MessageBox.Show("Error, operation was not performed successfully!");
                     }
 
 
@@ -98,7 +99,17 @@ namespace Admin_Toolroom
                     MessageBox.Show(f.ToString());
                 }
             }
+           
+        }
+        private void cmbOU_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.lblMoveToData.Text = cmbOU.SelectedItem.ToString();
+            
+        }
 
+        private void cmbOU_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            this.lblMoveToData.Text = cmbOU.SelectedItem.ToString();
         }
     }
 }

@@ -36,6 +36,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.unlockAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDC = new System.Windows.Forms.TextBox();
@@ -75,7 +76,6 @@
             this.JoinToDomainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.slanjePorukaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.remoteAssistanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -85,7 +85,7 @@
             // txtSearch
             // 
             this.txtSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.txtSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.txtSearch.Location = new System.Drawing.Point(36, 44);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(251, 22);
@@ -124,21 +124,28 @@
             this.resetPasswordToolStripMenuItem,
             this.moveUserToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(188, 110);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 76);
             // 
             // unlockAccountToolStripMenuItem
             // 
             this.unlockAccountToolStripMenuItem.Name = "unlockAccountToolStripMenuItem";
-            this.unlockAccountToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.unlockAccountToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
             this.unlockAccountToolStripMenuItem.Text = "Unlock Account";
             this.unlockAccountToolStripMenuItem.Click += new System.EventHandler(this.unlockAccountToolStripMenuItem_Click);
             // 
             // resetPasswordToolStripMenuItem
             // 
             this.resetPasswordToolStripMenuItem.Name = "resetPasswordToolStripMenuItem";
-            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
             this.resetPasswordToolStripMenuItem.Text = "Reset Password";
             this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
+            // 
+            // moveUserToolStripMenuItem
+            // 
+            this.moveUserToolStripMenuItem.Name = "moveUserToolStripMenuItem";
+            this.moveUserToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.moveUserToolStripMenuItem.Text = "Move User";
+            this.moveUserToolStripMenuItem.Click += new System.EventHandler(this.moveUserToolStripMenuItem_Click);
             // 
             // groupBox3
             // 
@@ -175,7 +182,7 @@
             // txtDC
             // 
             this.txtDC.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtDC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.txtDC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.txtDC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtDC.Location = new System.Drawing.Point(169, 181);
             this.txtDC.Margin = new System.Windows.Forms.Padding(4);
@@ -197,7 +204,7 @@
             // txtLDAP
             // 
             this.txtLDAP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtLDAP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.txtLDAP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.txtLDAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtLDAP.Location = new System.Drawing.Point(169, 144);
             this.txtLDAP.Margin = new System.Windows.Forms.Padding(4);
@@ -230,7 +237,7 @@
             // txtDomainName
             // 
             this.txtDomainName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtDomainName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.txtDomainName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtDomainName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtDomainName.Location = new System.Drawing.Point(168, 37);
             this.txtDomainName.Margin = new System.Windows.Forms.Padding(4);
@@ -544,13 +551,6 @@
             this.remoteAssistanceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.remoteAssistanceToolStripMenuItem.Text = "Remote Assistance";
             this.remoteAssistanceToolStripMenuItem.Click += new System.EventHandler(this.remoteAssistanceToolStripMenuItem_Click);
-            // 
-            // moveUserToolStripMenuItem
-            // 
-            this.moveUserToolStripMenuItem.Name = "moveUserToolStripMenuItem";
-            this.moveUserToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
-            this.moveUserToolStripMenuItem.Text = "Move User";
-            this.moveUserToolStripMenuItem.Click += new System.EventHandler(this.moveUserToolStripMenuItem_Click);
             // 
             // User_info
             // 
