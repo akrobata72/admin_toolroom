@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MoveUser));
             this.cmbOU = new System.Windows.Forms.ComboBox();
             this.btnPremesti = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
@@ -38,8 +39,8 @@
             this.lblDName = new System.Windows.Forms.Label();
             this.lblUserCaption = new System.Windows.Forms.Label();
             this.gpbUser = new System.Windows.Forms.GroupBox();
-            this.lblMoveTo = new System.Windows.Forms.Label();
             this.lblMoveToData = new System.Windows.Forms.Label();
+            this.lblMoveTo = new System.Windows.Forms.Label();
             this.gpbUser.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,10 +53,11 @@
             this.cmbOU.Size = new System.Drawing.Size(569, 33);
             this.cmbOU.TabIndex = 0;
             this.cmbOU.SelectedIndexChanged += new System.EventHandler(this.cmbOU_SelectedIndexChanged_1);
+            this.cmbOU.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtn_KeyPress);
             // 
             // btnPremesti
             // 
-            this.btnPremesti.Location = new System.Drawing.Point(12, 182);
+            this.btnPremesti.Location = new System.Drawing.Point(12, 184);
             this.btnPremesti.Margin = new System.Windows.Forms.Padding(5);
             this.btnPremesti.Name = "btnPremesti";
             this.btnPremesti.Size = new System.Drawing.Size(199, 52);
@@ -146,16 +148,6 @@
             this.gpbUser.TabStop = false;
             this.gpbUser.Text = "User data";
             // 
-            // lblMoveTo
-            // 
-            this.lblMoveTo.AutoSize = true;
-            this.lblMoveTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblMoveTo.Location = new System.Drawing.Point(8, 57);
-            this.lblMoveTo.Name = "lblMoveTo";
-            this.lblMoveTo.Size = new System.Drawing.Size(90, 24);
-            this.lblMoveTo.TabIndex = 10;
-            this.lblMoveTo.Text = "Move To:";
-            // 
             // lblMoveToData
             // 
             this.lblMoveToData.AutoSize = true;
@@ -166,11 +158,21 @@
             this.lblMoveToData.TabIndex = 11;
             this.lblMoveToData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lblMoveTo
+            // 
+            this.lblMoveTo.AutoSize = true;
+            this.lblMoveTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lblMoveTo.Location = new System.Drawing.Point(8, 57);
+            this.lblMoveTo.Name = "lblMoveTo";
+            this.lblMoveTo.Size = new System.Drawing.Size(90, 24);
+            this.lblMoveTo.TabIndex = 10;
+            this.lblMoveTo.Text = "Move To:";
+            // 
             // MoveUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 256);
+            this.ClientSize = new System.Drawing.Size(592, 256);
             this.Controls.Add(this.gpbUser);
             this.Controls.Add(this.lblAdminUser);
             this.Controls.Add(this.lblDomain);
@@ -180,9 +182,10 @@
             this.Controls.Add(this.btnPremesti);
             this.Controls.Add(this.cmbOU);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MoveUser";
-            this.Text = "MoveUser";
+            this.Text = "User Moving";
             this.gpbUser.ResumeLayout(false);
             this.gpbUser.PerformLayout();
             this.ResumeLayout(false);

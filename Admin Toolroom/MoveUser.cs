@@ -111,6 +111,14 @@ namespace Admin_Toolroom
         {
             this.lblMoveToData.Text = cmbOU.SelectedItem.ToString();
         }
+
+        private void EnterBtn_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPremesti_Click(sender, e);
+            }
+        }
     }
 }
 

@@ -20,7 +20,10 @@ namespace Admin_Toolroom
             InitializeComponent();
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
-            this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+            //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+
+            this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
+            
 
             //default settings for computer list
             string settings = Properties.Settings.Default.sCompList;
@@ -69,6 +72,15 @@ namespace Admin_Toolroom
                 btnAdd_Click(sender, e);
             }
         }
+
+        private void EnterbtnSend_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSendPopupMsg_Click(sender, e);
+            }
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (this.lstRacunara1.SelectedIndex >= 0)

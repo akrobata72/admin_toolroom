@@ -89,7 +89,7 @@
             this.txtSearch.Location = new System.Drawing.Point(36, 44);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(251, 22);
-            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TabIndex = 0;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyPress);
             // 
             // btnSearch
@@ -98,7 +98,7 @@
             this.btnSearch.Location = new System.Drawing.Point(310, 31);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(94, 44);
-            this.btnSearch.TabIndex = 2;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -124,26 +124,26 @@
             this.resetPasswordToolStripMenuItem,
             this.moveUserToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(188, 82);
             // 
             // unlockAccountToolStripMenuItem
             // 
             this.unlockAccountToolStripMenuItem.Name = "unlockAccountToolStripMenuItem";
-            this.unlockAccountToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.unlockAccountToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.unlockAccountToolStripMenuItem.Text = "Unlock Account";
             this.unlockAccountToolStripMenuItem.Click += new System.EventHandler(this.unlockAccountToolStripMenuItem_Click);
             // 
             // resetPasswordToolStripMenuItem
             // 
             this.resetPasswordToolStripMenuItem.Name = "resetPasswordToolStripMenuItem";
-            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.resetPasswordToolStripMenuItem.Text = "Reset Password";
             this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
             // 
             // moveUserToolStripMenuItem
             // 
             this.moveUserToolStripMenuItem.Name = "moveUserToolStripMenuItem";
-            this.moveUserToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.moveUserToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.moveUserToolStripMenuItem.Text = "Move User";
             this.moveUserToolStripMenuItem.Click += new System.EventHandler(this.moveUserToolStripMenuItem_Click);
             // 
@@ -164,7 +164,7 @@
             this.groupBox3.Location = new System.Drawing.Point(448, 44);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(487, 222);
-            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Domain Admin";
             // 
@@ -188,7 +188,8 @@
             this.txtDC.Margin = new System.Windows.Forms.Padding(4);
             this.txtDC.Name = "txtDC";
             this.txtDC.Size = new System.Drawing.Size(296, 26);
-            this.txtDC.TabIndex = 116;
+            this.txtDC.TabIndex = 4;
+            this.txtDC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyPress);
             // 
             // label12
             // 
@@ -211,6 +212,7 @@
             this.txtLDAP.Name = "txtLDAP";
             this.txtLDAP.Size = new System.Drawing.Size(296, 26);
             this.txtLDAP.TabIndex = 3;
+            this.txtLDAP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyPress);
             // 
             // label3
             // 
@@ -233,6 +235,7 @@
             this.txtDomainAdminUser.Name = "txtDomainAdminUser";
             this.txtDomainAdminUser.Size = new System.Drawing.Size(296, 26);
             this.txtDomainAdminUser.TabIndex = 1;
+            this.txtDomainAdminUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyPress);
             // 
             // txtDomainName
             // 
@@ -244,6 +247,7 @@
             this.txtDomainName.Name = "txtDomainName";
             this.txtDomainName.Size = new System.Drawing.Size(296, 26);
             this.txtDomainName.TabIndex = 0;
+            this.txtDomainName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyPress);
             // 
             // txtDomainAdminPwd
             // 

@@ -62,9 +62,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label15 = new System.Windows.Forms.Label();
             this.txtUserDomainOU = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -94,6 +94,7 @@
             this.txtDomainName.Name = "txtDomainName";
             this.txtDomainName.Size = new System.Drawing.Size(321, 26);
             this.txtDomainName.TabIndex = 0;
+            this.txtDomainName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // txtDomainOU
             // 
@@ -103,7 +104,8 @@
             this.txtDomainOU.Margin = new System.Windows.Forms.Padding(4);
             this.txtDomainOU.Name = "txtDomainOU";
             this.txtDomainOU.Size = new System.Drawing.Size(321, 26);
-            this.txtDomainOU.TabIndex = 1;
+            this.txtDomainOU.TabIndex = 0;
+            this.txtDomainOU.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label2
             // 
@@ -124,7 +126,8 @@
             this.txtDomainAdminUser.Margin = new System.Windows.Forms.Padding(4);
             this.txtDomainAdminUser.Name = "txtDomainAdminUser";
             this.txtDomainAdminUser.Size = new System.Drawing.Size(321, 26);
-            this.txtDomainAdminUser.TabIndex = 2;
+            this.txtDomainAdminUser.TabIndex = 1;
+            this.txtDomainAdminUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label3
             // 
@@ -146,7 +149,8 @@
             this.txtDomainAdminPwd.Name = "txtDomainAdminPwd";
             this.txtDomainAdminPwd.PasswordChar = '*';
             this.txtDomainAdminPwd.Size = new System.Drawing.Size(236, 26);
-            this.txtDomainAdminPwd.TabIndex = 3;
+            this.txtDomainAdminPwd.TabIndex = 2;
+            this.txtDomainAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label4
             // 
@@ -167,7 +171,8 @@
             this.txtWorkgroupName.Margin = new System.Windows.Forms.Padding(4);
             this.txtWorkgroupName.Name = "txtWorkgroupName";
             this.txtWorkgroupName.Size = new System.Drawing.Size(267, 26);
-            this.txtWorkgroupName.TabIndex = 4;
+            this.txtWorkgroupName.TabIndex = 3;
+            this.txtWorkgroupName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label5
             // 
@@ -188,7 +193,8 @@
             this.txtLocalAdminUsr.Margin = new System.Windows.Forms.Padding(4);
             this.txtLocalAdminUsr.Name = "txtLocalAdminUsr";
             this.txtLocalAdminUsr.Size = new System.Drawing.Size(265, 26);
-            this.txtLocalAdminUsr.TabIndex = 6;
+            this.txtLocalAdminUsr.TabIndex = 4;
+            this.txtLocalAdminUsr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label6
             // 
@@ -211,6 +217,7 @@
             this.txtLocalAdminPwd.PasswordChar = '*';
             this.txtLocalAdminPwd.Size = new System.Drawing.Size(178, 26);
             this.txtLocalAdminPwd.TabIndex = 5;
+            this.txtLocalAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // button1
             // 
@@ -218,7 +225,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(260, 49);
-            this.button1.TabIndex = 13;
+            this.button1.TabIndex = 1;
             this.button1.Text = "S A V E";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -235,7 +242,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(43, 26);
+            this.label9.Location = new System.Drawing.Point(40, 19);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(113, 29);
@@ -251,7 +258,8 @@
             this.txtPopLstComp.Multiline = true;
             this.txtPopLstComp.Name = "txtPopLstComp";
             this.txtPopLstComp.Size = new System.Drawing.Size(634, 64);
-            this.txtPopLstComp.TabIndex = 9;
+            this.txtPopLstComp.TabIndex = 0;
+            this.txtPopLstComp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label7
             // 
@@ -284,7 +292,8 @@
             this.txtLdapPath.Multiline = true;
             this.txtLdapPath.Name = "txtLdapPath";
             this.txtLdapPath.Size = new System.Drawing.Size(633, 41);
-            this.txtLdapPath.TabIndex = 10;
+            this.txtLdapPath.TabIndex = 1;
+            this.txtLdapPath.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label11
             // 
@@ -303,7 +312,8 @@
             this.txtRdpPath.Location = new System.Drawing.Point(14, 38);
             this.txtRdpPath.Name = "txtRdpPath";
             this.txtRdpPath.Size = new System.Drawing.Size(490, 26);
-            this.txtRdpPath.TabIndex = 12;
+            this.txtRdpPath.TabIndex = 0;
+            this.txtRdpPath.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label12
             // 
@@ -320,7 +330,7 @@
             this.btnRDPfile.Location = new System.Drawing.Point(510, 37);
             this.btnRDPfile.Name = "btnRDPfile";
             this.btnRDPfile.Size = new System.Drawing.Size(137, 27);
-            this.btnRDPfile.TabIndex = 11;
+            this.btnRDPfile.TabIndex = 1;
             this.btnRDPfile.Text = "Browse";
             this.btnRDPfile.UseVisualStyleBackColor = true;
             this.btnRDPfile.Click += new System.EventHandler(this.button2_Click);
@@ -337,7 +347,8 @@
             this.txtDC.Margin = new System.Windows.Forms.Padding(4);
             this.txtDC.Name = "txtDC";
             this.txtDC.Size = new System.Drawing.Size(232, 26);
-            this.txtDC.TabIndex = 7;
+            this.txtDC.TabIndex = 6;
+            this.txtDC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label13
             // 
@@ -358,7 +369,8 @@
             this.txtDefaultPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtDefaultPassword.Name = "txtDefaultPassword";
             this.txtDefaultPassword.Size = new System.Drawing.Size(293, 26);
-            this.txtDefaultPassword.TabIndex = 8;
+            this.txtDefaultPassword.TabIndex = 1;
+            this.txtDefaultPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
             // 
             // label14
             // 
@@ -382,7 +394,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(710, 306);
-            this.tabControl1.TabIndex = 26;
+            this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -434,20 +446,6 @@
             this.tabPage3.Text = "User Info";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.label2);
-            this.tabPage4.Controls.Add(this.label11);
-            this.tabPage4.Controls.Add(this.txtLdapPath);
-            this.tabPage4.Controls.Add(this.txtDomainOU);
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(702, 273);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Join/Unjoin Domain";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -467,7 +465,22 @@
             this.txtUserDomainOU.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserDomainOU.Name = "txtUserDomainOU";
             this.txtUserDomainOU.Size = new System.Drawing.Size(321, 26);
-            this.txtUserDomainOU.TabIndex = 3;
+            this.txtUserDomainOU.TabIndex = 0;
+            this.txtUserDomainOU.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnSave_KeyPress);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.label2);
+            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.txtLdapPath);
+            this.tabPage4.Controls.Add(this.txtDomainOU);
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(702, 273);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Join/Unjoin Domain";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
@@ -487,7 +500,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(780, 527);
+            this.ClientSize = new System.Drawing.Size(737, 462);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -496,7 +509,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "configuration";
-            this.Text = "Settings";
+            this.Text = "Application Settings";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

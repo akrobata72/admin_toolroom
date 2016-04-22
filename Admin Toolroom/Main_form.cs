@@ -19,10 +19,13 @@ namespace Admin_Toolroom
             InitializeComponent();
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtLocalAdminUsr.Text = Properties.Settings.Default.sLocAdminName;
-            this.txtLocalAdminPwd.Text = Properties.Settings.Default.sLocAdminPwd;
+            //this.txtLocalAdminPwd.Text = Properties.Settings.Default.sLocAdminPwd;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
-            this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+            //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
             this.txtDomainOU.Text = Properties.Settings.Default.sDomainOU;
+
+            this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
+            this.txtLocalAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sLocAdminPwd));
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -65,6 +68,14 @@ namespace Admin_Toolroom
             if (e.KeyCode == Keys.Enter)
             {
                 btnAdd_Click(sender, e);
+            }
+        }
+
+        private void EnterBtnJoinDomain_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnJoinDomain_Click(sender, e);
             }
         }
 

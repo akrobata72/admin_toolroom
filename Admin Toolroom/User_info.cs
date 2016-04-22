@@ -20,9 +20,12 @@ namespace Admin_Toolroom
             InitializeComponent();
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
-            this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+            //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
             this.txtLDAP.Text = Properties.Settings.Default.sUserDomainOU;
             this.txtDC.Text = Properties.Settings.Default.sDC;
+
+            this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
+
 
         }
 

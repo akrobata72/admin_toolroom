@@ -172,6 +172,7 @@
             this.txtDomainName.Name = "txtDomainName";
             this.txtDomainName.Size = new System.Drawing.Size(320, 27);
             this.txtDomainName.TabIndex = 0;
+            this.txtDomainName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
             // txtDomainAdminUser
             // 
@@ -183,6 +184,7 @@
             this.txtDomainAdminUser.Name = "txtDomainAdminUser";
             this.txtDomainAdminUser.Size = new System.Drawing.Size(320, 27);
             this.txtDomainAdminUser.TabIndex = 2;
+            this.txtDomainAdminUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
             // txtDomainAdminPwd
             // 
@@ -193,6 +195,7 @@
             this.txtDomainAdminPwd.PasswordChar = '*';
             this.txtDomainAdminPwd.Size = new System.Drawing.Size(320, 27);
             this.txtDomainAdminPwd.TabIndex = 3;
+            this.txtDomainAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
             // label1
             // 
@@ -268,6 +271,7 @@
             this.txtDomainOU.Name = "txtDomainOU";
             this.txtDomainOU.Size = new System.Drawing.Size(320, 27);
             this.txtDomainOU.TabIndex = 1;
+            this.txtDomainOU.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
             // groupBox4
             // 
@@ -295,6 +299,7 @@
             this.txtLocalAdminUsr.Name = "txtLocalAdminUsr";
             this.txtLocalAdminUsr.Size = new System.Drawing.Size(320, 27);
             this.txtLocalAdminUsr.TabIndex = 0;
+            this.txtLocalAdminUsr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
             // label6
             // 
@@ -327,6 +332,7 @@
             this.txtLocalAdminPwd.PasswordChar = '*';
             this.txtLocalAdminPwd.Size = new System.Drawing.Size(320, 27);
             this.txtLocalAdminPwd.TabIndex = 1;
+            this.txtLocalAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
             // chbReboot
             // 

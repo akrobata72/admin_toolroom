@@ -8,11 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Collections;
+using System.Security;
+using System.Security.Cryptography;
 
 namespace Admin_Toolroom
 {
     public partial class configuration : Form
     {
+
+        
         public configuration()
         {
             InitializeComponent();
@@ -30,20 +34,23 @@ namespace Admin_Toolroom
             this.txtDefaultPassword.Text = Properties.Settings.Default.sDefaultPassword;
             this.txtUserDomainOU.Text = Properties.Settings.Default.sUserDomainOU;
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             {
-
+                                
                 Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+                Properties.Settings.Default.sDomUsrPwd = Convert.ToBase64String(Encoding.Unicode.GetBytes(txtDomainAdminPwd.Text));
+                Properties.Settings.Default.sLocAdminPwd =Convert.ToBase64String(Encoding.Unicode.GetBytes(txtLocalAdminPwd.Text));
 
                 Properties.Settings.Default.sDomainName = txtDomainName.Text;
                 Properties.Settings.Default.sDomainOU = txtDomainOU.Text;
                 Properties.Settings.Default.sDomUsrName = txtDomainAdminUser.Text;
-                Properties.Settings.Default.sDomUsrPwd = txtDomainAdminPwd.Text;
+                //Properties.Settings.Default.sDomUsrPwd = txtDomainAdminPwd.Text;
                 Properties.Settings.Default.sWorkgroupName = txtWorkgroupName.Text;
                 Properties.Settings.Default.sLocAdminName = txtLocalAdminUsr.Text;
-                Properties.Settings.Default.sLocAdminPwd = txtLocalAdminPwd.Text;
+                //Properties.Settings.Default.sLocAdminPwd = txtLocalAdminPwd.Text;
                 Properties.Settings.Default.sCompList = txtPopLstComp.Text;
                 Properties.Settings.Default.sLdapPath = txtLdapPath.Text;
                 Properties.Settings.Default.sRDPTxtPath = txtRdpPath.Text;
@@ -73,6 +80,14 @@ namespace Admin_Toolroom
             }
         }
 
+        private void EnterBtnSave_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(sender, e);
+            }
+        }
 
     }
+
 }

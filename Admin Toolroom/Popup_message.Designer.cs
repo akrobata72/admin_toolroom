@@ -33,6 +33,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstRacunara1 = new System.Windows.Forms.ListBox();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,8 +58,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lstLog = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -105,26 +105,40 @@
             this.selectAllToolStripMenuItem,
             this.clearAllToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(182, 162);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(151, 134);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+            this.cutToolStripMenuItem.Text = "Cut";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.selectAllToolStripMenuItem.Text = "Sellect All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // clearAllToolStripMenuItem
             // 
             this.clearAllToolStripMenuItem.Name = "clearAllToolStripMenuItem";
-            this.clearAllToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.clearAllToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.clearAllToolStripMenuItem.Text = "Clear All";
             this.clearAllToolStripMenuItem.Click += new System.EventHandler(this.clearAllToolStripMenuItem_Click);
             // 
@@ -162,7 +176,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(373, 127);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add computer to list";
             // 
@@ -199,6 +213,7 @@
             this.txtPopupMsg.Name = "txtPopupMsg";
             this.txtPopupMsg.Size = new System.Drawing.Size(485, 57);
             this.txtPopupMsg.TabIndex = 0;
+            this.txtPopupMsg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnSend_KeyPress);
             // 
             // txtExpireTime
             // 
@@ -207,6 +222,7 @@
             this.txtExpireTime.Name = "txtExpireTime";
             this.txtExpireTime.Size = new System.Drawing.Size(100, 26);
             this.txtExpireTime.TabIndex = 1;
+            this.txtExpireTime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnSend_KeyPress);
             // 
             // label1
             // 
@@ -228,7 +244,7 @@
             this.groupBox3.Location = new System.Drawing.Point(407, 8);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(551, 199);
-            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Message";
             // 
@@ -291,6 +307,7 @@
             this.txtDomainAdminUser.Name = "txtDomainAdminUser";
             this.txtDomainAdminUser.Size = new System.Drawing.Size(386, 26);
             this.txtDomainAdminUser.TabIndex = 1;
+            this.txtDomainAdminUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnSend_KeyPress);
             // 
             // txtDomainName
             // 
@@ -302,6 +319,7 @@
             this.txtDomainName.Name = "txtDomainName";
             this.txtDomainName.Size = new System.Drawing.Size(386, 26);
             this.txtDomainName.TabIndex = 0;
+            this.txtDomainName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnSend_KeyPress);
             // 
             // txtDomainAdminPwd
             // 
@@ -312,6 +330,7 @@
             this.txtDomainAdminPwd.PasswordChar = '*';
             this.txtDomainAdminPwd.Size = new System.Drawing.Size(386, 26);
             this.txtDomainAdminPwd.TabIndex = 2;
+            this.txtDomainAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnSend_KeyPress);
             // 
             // label4
             // 
@@ -352,20 +371,6 @@
             this.label6.Size = new System.Drawing.Size(36, 17);
             this.label6.TabIndex = 119;
             this.label6.Text = "Log:";
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.cutToolStripMenuItem.Text = "Cut";
-            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // Popup_message
             // 

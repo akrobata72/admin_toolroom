@@ -71,6 +71,7 @@
             this.txtImeRacunara1.Size = new System.Drawing.Size(214, 26);
             this.txtImeRacunara1.TabIndex = 0;
             this.txtImeRacunara1.WordWrap = false;
+            this.txtImeRacunara1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImeRacunara1_KeyPress);
             // 
             // btnAdd
             // 
@@ -145,6 +146,7 @@
             this.txtDomainName.Name = "txtDomainName";
             this.txtDomainName.Size = new System.Drawing.Size(365, 26);
             this.txtDomainName.TabIndex = 0;
+            this.txtDomainName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
             // label1
             // 
@@ -164,7 +166,7 @@
             this.chbReboot.Location = new System.Drawing.Point(480, 362);
             this.chbReboot.Name = "chbReboot";
             this.chbReboot.Size = new System.Drawing.Size(90, 24);
-            this.chbReboot.TabIndex = 3;
+            this.chbReboot.TabIndex = 5;
             this.chbReboot.Text = "Reboot";
             this.chbReboot.UseVisualStyleBackColor = true;
             // 
@@ -175,7 +177,7 @@
             this.btnUnjoinDomain.Margin = new System.Windows.Forms.Padding(4);
             this.btnUnjoinDomain.Name = "btnUnjoinDomain";
             this.btnUnjoinDomain.Size = new System.Drawing.Size(256, 46);
-            this.btnUnjoinDomain.TabIndex = 4;
+            this.btnUnjoinDomain.TabIndex = 3;
             this.btnUnjoinDomain.Text = "Unjoin from domain!";
             this.btnUnjoinDomain.UseVisualStyleBackColor = false;
             this.btnUnjoinDomain.Click += new System.EventHandler(this.btnUnjoinDomain_Click);
@@ -206,6 +208,7 @@
             this.txtWorkgroupName.Name = "txtWorkgroupName";
             this.txtWorkgroupName.Size = new System.Drawing.Size(365, 26);
             this.txtWorkgroupName.TabIndex = 0;
+            this.txtWorkgroupName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
             // label2
             // 
@@ -228,6 +231,7 @@
             this.txtLocalAdminUsr.Name = "txtLocalAdminUsr";
             this.txtLocalAdminUsr.Size = new System.Drawing.Size(365, 26);
             this.txtLocalAdminUsr.TabIndex = 1;
+            this.txtLocalAdminUsr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
             // label6
             // 
@@ -260,6 +264,7 @@
             this.txtLocalAdminPwd.PasswordChar = '*';
             this.txtLocalAdminPwd.Size = new System.Drawing.Size(365, 26);
             this.txtLocalAdminPwd.TabIndex = 2;
+            this.txtLocalAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
             // groupBox2
             // 
@@ -272,7 +277,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(374, 305);
-            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista računara";
             // 
@@ -286,6 +291,7 @@
             this.txtDomainAdminUser.Name = "txtDomainAdminUser";
             this.txtDomainAdminUser.Size = new System.Drawing.Size(365, 26);
             this.txtDomainAdminUser.TabIndex = 1;
+            this.txtDomainAdminUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
             // label3
             // 
@@ -318,6 +324,7 @@
             this.txtDomainAdminPwd.PasswordChar = '*';
             this.txtDomainAdminPwd.Size = new System.Drawing.Size(365, 26);
             this.txtDomainAdminPwd.TabIndex = 2;
+            this.txtDomainAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
             // groupBox3
             // 

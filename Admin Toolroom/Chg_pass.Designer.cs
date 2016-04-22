@@ -41,12 +41,13 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblDomain = new System.Windows.Forms.Label();
             this.lblAdminUser = new System.Windows.Forms.Label();
+            this.lblResetPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNewPass
             // 
             this.txtNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtNewPass.Location = new System.Drawing.Point(251, 58);
+            this.txtNewPass.Location = new System.Drawing.Point(251, 61);
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(173, 30);
@@ -56,7 +57,7 @@
             // txtRepNewPass
             // 
             this.txtRepNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtRepNewPass.Location = new System.Drawing.Point(251, 100);
+            this.txtRepNewPass.Location = new System.Drawing.Point(251, 103);
             this.txtRepNewPass.Name = "txtRepNewPass";
             this.txtRepNewPass.PasswordChar = '*';
             this.txtRepNewPass.Size = new System.Drawing.Size(173, 30);
@@ -67,7 +68,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(7, 65);
+            this.label1.Location = new System.Drawing.Point(7, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(185, 20);
             this.label1.TabIndex = 2;
@@ -77,7 +78,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(7, 107);
+            this.label2.Location = new System.Drawing.Point(7, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(199, 20);
             this.label2.TabIndex = 3;
@@ -86,7 +87,7 @@
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnOK.Location = new System.Drawing.Point(63, 151);
+            this.btnOK.Location = new System.Drawing.Point(63, 154);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(108, 49);
             this.btnOK.TabIndex = 4;
@@ -97,7 +98,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnCancel.Location = new System.Drawing.Point(237, 151);
+            this.btnCancel.Location = new System.Drawing.Point(237, 154);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 49);
             this.btnCancel.TabIndex = 5;
@@ -160,11 +161,22 @@
             this.lblAdminUser.TabIndex = 11;
             this.lblAdminUser.Visible = false;
             // 
+            // lblResetPassword
+            // 
+            this.lblResetPassword.AutoSize = true;
+            this.lblResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblResetPassword.Location = new System.Drawing.Point(7, 18);
+            this.lblResetPassword.Name = "lblResetPassword";
+            this.lblResetPassword.Size = new System.Drawing.Size(167, 25);
+            this.lblResetPassword.TabIndex = 12;
+            this.lblResetPassword.Text = "Password Reset";
+            // 
             // Chg_pass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 216);
+            this.ClientSize = new System.Drawing.Size(436, 226);
+            this.Controls.Add(this.lblResetPassword);
             this.Controls.Add(this.lblAdminUser);
             this.Controls.Add(this.lblDomain);
             this.Controls.Add(this.lblUsername);
@@ -200,5 +212,6 @@
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblDomain;
         private System.Windows.Forms.Label lblAdminUser;
+        private System.Windows.Forms.Label lblResetPassword;
     }
 }
