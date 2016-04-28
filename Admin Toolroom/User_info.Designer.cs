@@ -76,6 +76,8 @@
             this.JoinToDomainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.slanjePorukaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.remoteAssistanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -124,26 +126,26 @@
             this.resetPasswordToolStripMenuItem,
             this.moveUserToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(188, 82);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 76);
             // 
             // unlockAccountToolStripMenuItem
             // 
             this.unlockAccountToolStripMenuItem.Name = "unlockAccountToolStripMenuItem";
-            this.unlockAccountToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.unlockAccountToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
             this.unlockAccountToolStripMenuItem.Text = "Unlock Account";
             this.unlockAccountToolStripMenuItem.Click += new System.EventHandler(this.unlockAccountToolStripMenuItem_Click);
             // 
             // resetPasswordToolStripMenuItem
             // 
             this.resetPasswordToolStripMenuItem.Name = "resetPasswordToolStripMenuItem";
-            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
             this.resetPasswordToolStripMenuItem.Text = "Reset Password";
             this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
             // 
             // moveUserToolStripMenuItem
             // 
             this.moveUserToolStripMenuItem.Name = "moveUserToolStripMenuItem";
-            this.moveUserToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.moveUserToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
             this.moveUserToolStripMenuItem.Text = "Move User";
             this.moveUserToolStripMenuItem.Click += new System.EventHandler(this.moveUserToolStripMenuItem_Click);
             // 
@@ -486,7 +488,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.toolsToolStripMenuItem});
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -555,6 +558,21 @@
             this.remoteAssistanceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.remoteAssistanceToolStripMenuItem.Text = "Remote Assistance";
             this.remoteAssistanceToolStripMenuItem.Click += new System.EventHandler(this.remoteAssistanceToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // User_info
             // 
@@ -630,5 +648,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDC;
         private System.Windows.Forms.ToolStripMenuItem moveUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }

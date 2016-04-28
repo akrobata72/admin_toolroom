@@ -30,10 +30,10 @@ namespace Admin_Toolroom
             axRDPViewer1.Connect(Invitation, "User1", "");
             axRDPViewer1.SmartSizing = true;
             //axRDPViewer1.RequestColorDepthChange(16);
-           
+
             //IRDPSRAPISessionProperties RdpProperties = axRDPViewer1.Properties as IRDPSRAPISessionProperties;
             //RdpProperties["session bpp"] = "16";
-            
+
 
         }
 
