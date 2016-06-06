@@ -22,10 +22,12 @@ namespace Admin_Toolroom
             InitializeComponent();
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtLocalAdminUsr.Text = Properties.Settings.Default.sLocAdminName;
-            this.txtLocalAdminPwd.Text = Properties.Settings.Default.sLocAdminPwd;
+            //this.txtLocalAdminPwd.Text = Properties.Settings.Default.sLocAdminPwd;
+            this.txtLocalAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sLocAdminPwd));
             this.txtWorkgroupName.Text = Properties.Settings.Default.sWorkgroupName;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
-            this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+            //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+            this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
             this.txtDomainOU.Text = Properties.Settings.Default.sDomainOU;
             this.txtPopLstComp.Text = Properties.Settings.Default.sCompList;
             this.txtLdapPath.Text = Properties.Settings.Default.sLdapPath;

@@ -11,6 +11,7 @@ using System.DirectoryServices;
 
 
 
+
 namespace Admin_Toolroom
 {
     public partial class User_info : Form
@@ -45,6 +46,9 @@ namespace Admin_Toolroom
 
             de.Username = txtDomainAdminUser.Text;
             de.Password = txtDomainAdminPwd.Text;
+            de.AuthenticationType = AuthenticationTypes.Secure;
+            
+            
             DirectorySearcher ds = new DirectorySearcher(de);
             ds.SearchScope = SearchScope.Subtree;
             ds.Filter = "(&(objectCategory=User) (samAccountName=" + "*" + txtSearch.Text + "*" + "))";
@@ -93,6 +97,7 @@ namespace Admin_Toolroom
 
                 de.Username = strUsrID;
                 de.Password = strpswrd;
+                de.AuthenticationType = AuthenticationTypes.Secure;
                 DirectorySearcher ds = new DirectorySearcher(de);
                 ds.SearchScope = SearchScope.Subtree;
                 ds.Filter = "(&(objectCategory=User) (samAccountName=" + s + "))";
