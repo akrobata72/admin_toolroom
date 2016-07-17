@@ -74,7 +74,7 @@
     <ManifestKeyFile>Admin Toolroom_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.RDPCOMAPILib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

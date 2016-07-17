@@ -10,6 +10,8 @@ using System.Management;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.IO;
+using System.Diagnostics;
 
 namespace Admin_Toolroom
 {
@@ -23,7 +25,7 @@ namespace Admin_Toolroom
             //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
 
             this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
-            
+
 
             //default settings for computer list
             string settings = Properties.Settings.Default.sCompList;
@@ -108,50 +110,7 @@ namespace Admin_Toolroom
 
         private void btnSendPopupMsg_Click(object sender, EventArgs e)
         {
-            if (txtDomainName.Text != "")
-            {
-                ManagementScope managementScope;
-
-                foreach (string computer in lstRacunara1.Items)
-                {
-                    //MessageBox.Show(computer);
-                    try
-                    {
-                        ConnectionOptions remoteConnectionOptions = new ConnectionOptions();
-                        remoteConnectionOptions.Impersonation = ImpersonationLevel.Impersonate;
-                        remoteConnectionOptions.EnablePrivileges = true;
-                        //remoteConnectionOptions.Authentication = AuthenticationLevel.Packet;
-                        remoteConnectionOptions.Authentication = System.Management.AuthenticationLevel.PacketPrivacy;
-                        remoteConnectionOptions.Username = txtDomainName.Text + @"\" + txtDomainAdminUser.Text;
-                        remoteConnectionOptions.Password = txtDomainAdminPwd.Text;
-
-                        managementScope = new ManagementScope(@"\\" + computer + @"\root\CIMV2", remoteConnectionOptions);
-                        managementScope.Connect();
-                        //MessageBox.Show(computer + " - Connected", computer + " - WMI obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        object[] ProcessToRun = { "msg * /time:" + txtExpireTime.Text + " " + txtPopupMsg.Text };
-                        ManagementClass networkTask = new ManagementClass(managementScope, new ManagementPath("Win32_Process"), new ObjectGetOptions());
-                        object popup = networkTask.InvokeMethod("Create", ProcessToRun);
-                        //MessageBox.Show(popup.ToString());
-                        uint popup1 = (uint)(popup);
-                        if (popup1 == 0)
-                        {
-                            //MessageBox.Show(computer + " - Poruka je poslata", computer + " - WMI", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            lstLog.Items.Add(computer + " - Message sent -   Date:  " + DateTime.Now.ToShortDateString() + ";   Time: " + DateTime.Now.ToShortTimeString());
-                        }
-                        else
-                        {
-                            lstLog.Items.Add(computer + " - Message NOT sent -   Date:  " + DateTime.Now.ToShortDateString() + ";   Time: " + DateTime.Now.ToShortTimeString());
-                        }
-
-                    }
-                    catch
-                    {
-                        //MessageBox.Show("WMI konekcija nije uspela!!!", "WMI obaveštenje - " + computer, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        lstLog.Items.Add(computer + " - WMI connection ERROR -   Date:  " + DateTime.Now.ToShortDateString() + ";   Time: " + DateTime.Now.ToShortTimeString());
-                    }
-                }
-            }
+            backgroundWorker.RunWorkerAsync();
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -228,7 +187,7 @@ namespace Admin_Toolroom
                     // Keep on adding selected item into a new List of Object
                     selectedItemList.Add(row);
                 }
-                sb.Remove(sb.Length - 1, 1);    // Just to avoid copying last empty row                
+                sb.Remove(sb.Length - 1, 1);    // Just to avoid copying last empty row
                 Clipboard.SetData(System.Windows.Forms.DataFormats.Text, sb.ToString());
                 // Removing selected items from the ListBox
                 foreach (object ln in selectedItemList)
@@ -239,6 +198,118 @@ namespace Admin_Toolroom
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            backgroundWorker.CancelAsync();
+        }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            if (txtDomainName.Text != "")
+            {
+                ManagementScope managementScope;
+
+                foreach (string computer in lstRacunara1.Items)
+                {
+                    if (backgroundWorker.CancellationPending)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        //MessageBox.Show(computer);
+                        try
+                        {
+
+
+                            ConnectionOptions remoteConnectionOptions = new ConnectionOptions();
+                            remoteConnectionOptions.Impersonation = ImpersonationLevel.Impersonate;
+                            remoteConnectionOptions.EnablePrivileges = true;
+                            //remoteConnectionOptions.Authentication = AuthenticationLevel.Packet;
+                            remoteConnectionOptions.Authentication = System.Management.AuthenticationLevel.PacketPrivacy;
+                            remoteConnectionOptions.Username = txtDomainName.Text + @"\" + txtDomainAdminUser.Text;
+                            remoteConnectionOptions.Password = txtDomainAdminPwd.Text;
+
+                            managementScope = new ManagementScope(@"\\" + computer + @"\root\CIMV2", remoteConnectionOptions);
+                            managementScope.Connect();
+                            //MessageBox.Show(computer + " - Connected", computer + " - WMI obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            object[] ProcessToRun = { "msg * /time:" + txtExpireTime.Text + " " + txtPopupMsg.Text };
+                            ManagementClass networkTask = new ManagementClass(managementScope, new ManagementPath("Win32_Process"), new ObjectGetOptions());
+                            object popup = networkTask.InvokeMethod("Create", ProcessToRun);
+                            //MessageBox.Show(popup.ToString());
+                            uint popup1 = (uint)(popup);
+                            if (popup1 == 0)
+                            {
+                                this.Invoke(new MethodInvoker(delegate ()
+                                {
+                                    //MessageBox.Show(computer + " - Poruka je poslata", computer + " - WMI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    lstLog.Items.Add(computer + " - Message sent -   Date:  " + DateTime.Now.ToShortDateString() + ";   Time: " + DateTime.Now.ToShortTimeString());
+
+                                }));
+                            }
+
+                            else
+                            {
+                                                                this.Invoke(new MethodInvoker(delegate ()
+                            {
+                                lstLog.Items.Add(computer + " - Message NOT sent -   Date:  " + DateTime.Now.ToShortDateString() + ";   Time: " + DateTime.Now.ToShortTimeString());
+                            }));
+                            }
+
+                        }
+                        catch
+                        {
+                            //MessageBox.Show("WMI konekcija nije uspela!!!", "WMI obaveštenje - " + computer, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            this.Invoke(new MethodInvoker(delegate ()
+                            {
+                                lstLog.Items.Add(computer + " - WMI connection ERROR -   Date:  " + DateTime.Now.ToShortDateString() + ";   Time: " + DateTime.Now.ToShortTimeString());
+                            }));
+                        }
+                    }
+                    backgroundWorker.ReportProgress(lstRacunara1.Items.Count);
+
+                }
+            }
+        }
+        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            this.progressBar1.Maximum = lstRacunara1.Items.Count;
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Increment(1);
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                MessageBox.Show("Job stopped!", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.progressBar1.Value = 0;
+            }
+            else
+            {
+                MessageBox.Show("Job done!", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.progressBar1.Value = 0;
+            }
+        }
+
+        private void btnSaveLogs_Click(object sender, EventArgs e)
+        {
+            if (lstRacunara1.Items.Count > 0)
+            {
+                using (TextWriter TW = new StreamWriter("SendMsgLog.txt"))
+                {
+                    foreach (string LstText in lstLog.Items)
+                    {
+                        TW.WriteLine(LstText);
+                    }
+                }
+
+                Process.Start("SendMsgLog.txt");
             }
         }
     }
