@@ -54,6 +54,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lstLog = new System.Windows.Forms.ListBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSaveLogs = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,7 +95,7 @@
             this.groupBox1.Controls.Add(this.txtImeRacunara1);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(20, 72);
+            this.groupBox1.Location = new System.Drawing.Point(20, 12);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -109,7 +113,7 @@
             this.lstRacunara1.Location = new System.Drawing.Point(10, 29);
             this.lstRacunara1.Margin = new System.Windows.Forms.Padding(4);
             this.lstRacunara1.Name = "lstRacunara1";
-            this.lstRacunara1.Size = new System.Drawing.Size(214, 264);
+            this.lstRacunara1.Size = new System.Drawing.Size(214, 244);
             this.lstRacunara1.TabIndex = 106;
             // 
             // btnDelete
@@ -163,7 +167,7 @@
             // 
             this.chbReboot.AutoSize = true;
             this.chbReboot.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.chbReboot.Location = new System.Drawing.Point(480, 362);
+            this.chbReboot.Location = new System.Drawing.Point(10, 276);
             this.chbReboot.Name = "chbReboot";
             this.chbReboot.Size = new System.Drawing.Size(90, 24);
             this.chbReboot.TabIndex = 5;
@@ -173,10 +177,10 @@
             // btnUnjoinDomain
             // 
             this.btnUnjoinDomain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnUnjoinDomain.Location = new System.Drawing.Point(605, 356);
+            this.btnUnjoinDomain.Location = new System.Drawing.Point(20, 458);
             this.btnUnjoinDomain.Margin = new System.Windows.Forms.Padding(4);
             this.btnUnjoinDomain.Name = "btnUnjoinDomain";
-            this.btnUnjoinDomain.Size = new System.Drawing.Size(256, 46);
+            this.btnUnjoinDomain.Size = new System.Drawing.Size(221, 46);
             this.btnUnjoinDomain.TabIndex = 3;
             this.btnUnjoinDomain.Text = "Unjoin from domain!";
             this.btnUnjoinDomain.UseVisualStyleBackColor = false;
@@ -191,7 +195,7 @@
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.txtLocalAdminPwd);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox4.Location = new System.Drawing.Point(428, 37);
+            this.groupBox4.Location = new System.Drawing.Point(428, 21);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(493, 157);
             this.groupBox4.TabIndex = 1;
@@ -271,8 +275,9 @@
             this.groupBox2.Controls.Add(this.lstRacunara1);
             this.groupBox2.Controls.Add(this.btnEdit);
             this.groupBox2.Controls.Add(this.btnDelete);
+            this.groupBox2.Controls.Add(this.chbReboot);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox2.Location = new System.Drawing.Point(20, 205);
+            this.groupBox2.Location = new System.Drawing.Point(20, 145);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
@@ -336,7 +341,7 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox3.Location = new System.Drawing.Point(428, 200);
+            this.groupBox3.Location = new System.Drawing.Point(428, 184);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(493, 149);
             this.groupBox3.TabIndex = 2;
@@ -356,33 +361,73 @@
             // 
             this.lstLog.FormattingEnabled = true;
             this.lstLog.ItemHeight = 20;
-            this.lstLog.Location = new System.Drawing.Point(475, 414);
+            this.lstLog.Location = new System.Drawing.Point(475, 357);
             this.lstLog.Name = "lstLog";
-            this.lstLog.Size = new System.Drawing.Size(446, 104);
+            this.lstLog.Size = new System.Drawing.Size(446, 144);
             this.lstLog.TabIndex = 115;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnCancel.Location = new System.Drawing.Point(257, 462);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(99, 39);
+            this.btnCancel.TabIndex = 117;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSaveLogs
+            // 
+            this.btnSaveLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSaveLogs.Location = new System.Drawing.Point(822, 504);
+            this.btnSaveLogs.Name = "btnSaveLogs";
+            this.btnSaveLogs.Size = new System.Drawing.Size(99, 30);
+            this.btnSaveLogs.TabIndex = 118;
+            this.btnSaveLogs.Text = "Save Logs";
+            this.btnSaveLogs.UseVisualStyleBackColor = true;
+            this.btnSaveLogs.Click += new System.EventHandler(this.btnSaveLogs_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(20, 522);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(373, 12);
+            this.progressBar1.TabIndex = 119;
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // Unjoin_domain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 544);
+            this.ClientSize = new System.Drawing.Size(949, 543);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.btnSaveLogs);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lstLog);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.chbReboot);
             this.Controls.Add(this.btnUnjoinDomain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Unjoin_domain";
-            this.Text = "Unjoin computer from domain";
+            this.Text = "2.0.1 Admin Toolroom - Unjoin computer from domain";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -417,5 +462,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox lstLog;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSaveLogs;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }

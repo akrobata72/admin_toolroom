@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Management;
 using System.Net.NetworkInformation;
+using System.IO;
+using System.Diagnostics;
 
 namespace Admin_Toolroom
 {
@@ -99,7 +101,39 @@ namespace Admin_Toolroom
 
         private void btnJoinDomain_Click(object sender, EventArgs e)
         {
-            lstLog.Items.Clear();
+            backgroundWorker.RunWorkerAsync();
+        }
+
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            backgroundWorker.CancelAsync();
+        }
+
+        private void btnSaveLogs_Click(object sender, EventArgs e)
+        {
+            if (lstRacunara1.Items.Count > 0)
+            {
+                using (TextWriter TW = new StreamWriter("UnjoinLog.txt"))
+                {
+                    foreach (string LstText in lstLog.Items)
+                    {
+                        TW.WriteLine(LstText);
+                    }
+                }
+
+                Process.Start("UnjoinLog.txt");
+            }
+
+        }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                lstLog.Items.Clear();
+            }));
 
             if (txtDomainName.Text != "")
             {
@@ -120,9 +154,11 @@ namespace Admin_Toolroom
 
                         managementScope = new ManagementScope(@"\\" + computer + @"\root\CIMV2", remoteConnectionOptions);
                         managementScope.Connect();
-                        lstLog.Items.Add(computer + " - Connected");
-
-                        ManagementClass networkTask = new ManagementClass(managementScope, new ManagementPath("Win32_ComputerSystem"), new ObjectGetOptions());
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            lstLog.Items.Add(computer + " - Connected");
+                        }));
+                    ManagementClass networkTask = new ManagementClass(managementScope, new ManagementPath("Win32_ComputerSystem"), new ObjectGetOptions());
                         ManagementObjectCollection mc = networkTask.GetInstances();
 
                         foreach (ManagementObject m in mc)
@@ -140,7 +176,26 @@ namespace Admin_Toolroom
                             uint join2 = (uint)(join.Properties["ReturnValue"].Value);
                             if (join2 == 0)
                             {
-                                lstLog.Items.Add(computer + " - Welcome to the domain - " + txtDomainName.Text);
+                                this.Invoke(new MethodInvoker(delegate ()
+                                {
+                                    lstLog.Items.Add(computer + " - Welcome to the domain - " + txtDomainName.Text);
+                                }));
+
+                                //Reboot
+
+                                ObjectQuery objectQuery = null;
+                                ManagementObjectSearcher objectSearcher = null;
+
+                                objectQuery = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
+                                objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
+                                foreach (ManagementObject os in objectSearcher.Get())
+
+                                    if (chbReboot.Checked == true)
+                                    {
+                                        ManagementBaseObject outparam = os.InvokeMethod("Reboot", null, null);
+                                    }
+
+
                             }
 
                             else
@@ -176,31 +231,25 @@ namespace Admin_Toolroom
                                         strErrorDescription = "The machine is not currently joined to a domain";
                                         break;
                                 }
-                                lstLog.Items.Add(computer + " " + strErrorDescription);
+                                this.Invoke(new MethodInvoker(delegate ()
+                                {
+                                    lstLog.Items.Add(computer + " " + strErrorDescription);
+                                }));
                                 return;
                             }
                         }
 
-                        //Reboot
-
-                        ObjectQuery objectQuery = null;
-                        ManagementObjectSearcher objectSearcher = null;
-
-                        objectQuery = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
-                        objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
-                        foreach (ManagementObject os in objectSearcher.Get())
-
-                            if (chbReboot.Checked == true)
-                            {
-                                ManagementBaseObject outparam = os.InvokeMethod("Reboot", null, null);
-                            }
-
+                        
                     }
 
                     catch
                     {
-                       lstLog.Items.Add(computer + " - WMI connection is NOT success!");
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            lstLog.Items.Add(computer + " - WMI connection is NOT success!");
+                        }));
                     }
+                    backgroundWorker.ReportProgress(lstRacunara1.Items.Count);
                 }
 
             }
@@ -210,47 +259,24 @@ namespace Admin_Toolroom
             }
         }
 
-        private void izbaciIzDomenaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            Unjoin_domain f2 = new Unjoin_domain();
-            f2.ShowDialog();
+            this.progressBar1.Maximum = lstRacunara1.Items.Count;
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Increment(1);
         }
 
-        private void opcijeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            configuration f3 = new configuration();
-            f3.ShowDialog();
-        }
-
-        private void slanjePorukaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Popup_message f4 = new Popup_message();
-            f4.ShowDialog();
-        }
-
-        private void podaciOKorisnicimaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            User_info f5 = new User_info();
-            f5.ShowDialog();
-        }
-
-        private void remoteAssistanceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           RDPViewer  f6 = new RDPViewer();
-            f6.ShowDialog();
-        }
-
-        private void izlazToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (System.Windows.Forms.Application.MessageLoop)
+            if (e.Cancelled)
             {
-                // WinForms app
-                System.Windows.Forms.Application.Exit();
+                MessageBox.Show("Job stopped!", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.progressBar1.Value = 0;
             }
             else
             {
-                // Console app
-                System.Environment.Exit(1);
+                MessageBox.Show("Job done!", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.progressBar1.Value = 0;
             }
         }
     }

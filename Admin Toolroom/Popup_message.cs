@@ -255,7 +255,7 @@ namespace Admin_Toolroom
 
                             else
                             {
-                                                                this.Invoke(new MethodInvoker(delegate ()
+                              this.Invoke(new MethodInvoker(delegate ()
                             {
                                 lstLog.Items.Add(computer + " - Message NOT sent -   Date:  " + DateTime.Now.ToShortDateString() + ";   Time: " + DateTime.Now.ToShortTimeString());
                             }));
@@ -312,5 +312,7 @@ namespace Admin_Toolroom
                 Process.Start("SendMsgLog.txt");
             }
         }
+
+ 
     }
 }

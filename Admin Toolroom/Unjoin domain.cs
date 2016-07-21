@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Management;
 using System.Net.NetworkInformation;
+using System.IO;
+using System.Diagnostics;
 
 namespace Admin_Toolroom
 {
@@ -98,164 +100,224 @@ namespace Admin_Toolroom
 
         private void btnUnjoinDomain_Click(object sender, EventArgs e)
         {
-            lstLog.Items.Clear();
+            backgroundWorker.RunWorkerAsync();
+        }
 
-            if (txtWorkgroupName.Text != "" && txtDomainName.Text !="")
+        private void opcijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            configuration f4 = new configuration();
+            f4.ShowDialog();
+        }
+
+ 
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            backgroundWorker.CancelAsync();
+        }
+
+        private void btnSaveLogs_Click(object sender, EventArgs e)
+        {
+            if (lstRacunara1.Items.Count > 0)
+            {
+                using (TextWriter TW = new StreamWriter("UnjoinLog.txt"))
+                {
+                    foreach (string LstText in lstLog.Items)
+                    {
+                        TW.WriteLine(LstText);
+                    }
+                }
+
+                Process.Start("UnjoinLog.txt");
+            }
+        }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                lstLog.Items.Clear();
+            }));
+            if (txtWorkgroupName.Text != "" && txtDomainName.Text != "")
             {
                 ManagementScope managementScope;
 
                 foreach (string computer in lstRacunara1.Items)
                 {
-                    //MessageBox.Show(computer);
-                    try
+
+                    if (backgroundWorker.CancellationPending)
                     {
-                        ConnectionOptions remoteConnectionOptions = new ConnectionOptions();
-                        remoteConnectionOptions.Impersonation = ImpersonationLevel.Impersonate;
-                        remoteConnectionOptions.EnablePrivileges = true;
-                        //remoteConnectionOptions.Authentication = AuthenticationLevel.Packet;
-                        remoteConnectionOptions.Authentication = System.Management.AuthenticationLevel.PacketPrivacy;
-                        remoteConnectionOptions.Username = computer + @"\" + txtLocalAdminUsr.Text;
-                        remoteConnectionOptions.Password = txtLocalAdminPwd.Text;
+                        e.Cancel = true;
+                    }
+                    else
+                    {
 
-                        managementScope = new ManagementScope(@"\\" + computer + @"\root\CIMV2", remoteConnectionOptions);
-                        managementScope.Connect();
-                        lstLog.Items.Add(computer + " - Connected");
-
-                        ManagementClass networkTask = new ManagementClass(managementScope, new ManagementPath("Win32_ComputerSystem"), new ObjectGetOptions());
-                        ManagementObjectCollection mc = networkTask.GetInstances();
-
-                        foreach (ManagementObject m in mc)
+                        //MessageBox.Show(computer);
+                        try
                         {
+                            ConnectionOptions remoteConnectionOptions = new ConnectionOptions();
+                            remoteConnectionOptions.Impersonation = ImpersonationLevel.Impersonate;
+                            remoteConnectionOptions.EnablePrivileges = true;
+                            //remoteConnectionOptions.Authentication = AuthenticationLevel.Packet;
+                            remoteConnectionOptions.Authentication = System.Management.AuthenticationLevel.PacketPrivacy;
+                            remoteConnectionOptions.Username = computer + @"\" + txtLocalAdminUsr.Text;
+                            remoteConnectionOptions.Password = txtLocalAdminPwd.Text;
 
-                            ManagementBaseObject myDomain = m.GetMethodParameters("UnjoinDomainOrWorkgroup");
-                                                        
-                            myDomain["FUnjoinOptions"] = 4;
-                            myDomain["Password"] = txtDomainAdminPwd.Text;
-                            myDomain["UserName"] = txtDomainName.Text + @"\" + txtDomainAdminUser.Text;
-                            
-                            ManagementBaseObject unjoin = m.InvokeMethod("UnjoinDomainOrWorkgroup", myDomain, null);
-                            uint join2 = (uint)(unjoin.Properties["ReturnValue"].Value);
-                            if (join2 == 0)
-
+                            managementScope = new ManagementScope(@"\\" + computer + @"\root\CIMV2", remoteConnectionOptions);
+                            managementScope.Connect();
+                            this.Invoke(new MethodInvoker(delegate ()
                             {
-                                goto Nastavak;
-                            }
+                                lstLog.Items.Add(computer + " - Connected");
+                            }));
+                            ManagementClass networkTask = new ManagementClass(managementScope, new ManagementPath("Win32_ComputerSystem"), new ObjectGetOptions());
+                            ManagementObjectCollection mc = networkTask.GetInstances();
 
-                            else
+                            foreach (ManagementObject m in mc)
                             {
-                                string strErrorDescription = " ";
-                                switch (join2)
+
+                                ManagementBaseObject myDomain = m.GetMethodParameters("UnjoinDomainOrWorkgroup");
+
+                                myDomain["FUnjoinOptions"] = 4;
+                                myDomain["Password"] = txtDomainAdminPwd.Text;
+                                myDomain["UserName"] = txtDomainName.Text + @"\" + txtDomainAdminUser.Text;
+
+                                ManagementBaseObject unjoin = m.InvokeMethod("UnjoinDomainOrWorkgroup", myDomain, null);
+                                uint join2 = (uint)(unjoin.Properties["ReturnValue"].Value);
+                                if (join2 == 0)
+
                                 {
-                                    case 5:
-                                        strErrorDescription = "Access is denied";
-                                        break;
-                                    case 87:
-                                        strErrorDescription = "The parameter is incorrect";
-                                        break;
-                                    case 110:
-                                        strErrorDescription = "The system cannot open the specified object";
-                                        break;
-                                    case 1323:
-                                        strErrorDescription = "Unable to update the password";
-                                        break;
-                                    case 1326:
-                                        strErrorDescription = "Logon failure: unknown username or bad password";
-                                        break;
-                                    case 1355:
-                                        strErrorDescription = "The specified domain either does not exist or could not be contacted";
-                                        break;
-                                    case 2224:
-                                        strErrorDescription = "The account already exists";
-                                        break;
-                                    case 2691:
-                                        strErrorDescription = "The machine is already joined to the domain";
-                                        break;
-                                    case 2692:
-                                        strErrorDescription = "The machine is not currently joined to a domain";
-                                        break;
+                                    goto Nastavak;
                                 }
-                                lstLog.Items.Add(computer + " " + strErrorDescription);
-                                return;
-                            }
-                        }
-                        Nastavak:
-                        foreach (ManagementObject n in mc)
-                        {
-                            ManagementBaseObject myDomain1 = n.GetMethodParameters("JoinDomainOrWorkgroup");
 
-                            
+                                else
+                                {
+                                    string strErrorDescription = " ";
+                                    switch (join2)
+                                    {
+                                        case 5:
+                                            strErrorDescription = "Access is denied";
+                                            break;
+                                        case 87:
+                                            strErrorDescription = "The parameter is incorrect";
+                                            break;
+                                        case 110:
+                                            strErrorDescription = "The system cannot open the specified object";
+                                            break;
+                                        case 1323:
+                                            strErrorDescription = "Unable to update the password";
+                                            break;
+                                        case 1326:
+                                            strErrorDescription = "Logon failure: unknown username or bad password";
+                                            break;
+                                        case 1355:
+                                            strErrorDescription = "The specified domain either does not exist or could not be contacted";
+                                            break;
+                                        case 2224:
+                                            strErrorDescription = "The account already exists";
+                                            break;
+                                        case 2691:
+                                            strErrorDescription = "The machine is already joined to the domain";
+                                            break;
+                                        case 2692:
+                                            strErrorDescription = "The machine is not currently joined to a domain";
+                                            break;
+                                    }
+                                    this.Invoke(new MethodInvoker(delegate ()
+                                    {
+                                        lstLog.Items.Add(computer + " " + strErrorDescription);
+                                    }));
+                                    return;
+                                }
+                            }
+                            Nastavak:
+                            foreach (ManagementObject n in mc)
+                            {
+                                ManagementBaseObject myDomain1 = n.GetMethodParameters("JoinDomainOrWorkgroup");
+
+
 
                                 myDomain1["Password"] = txtLocalAdminPwd.Text;
-                            myDomain1["UserName"] = computer + @"\" + txtLocalAdminUsr.Text;
-                            myDomain1["Name"] = txtWorkgroupName.Text;
-                            myDomain1["FJoinOptions"] = 2;
-                            ManagementBaseObject unjoin1 = n.InvokeMethod("JoinDomainOrWorkgroup", myDomain1, null);
-                            uint join3 = (uint)(unjoin1.Properties["ReturnValue"].Value);
-                            if (join3 == 0)
-                            {
-                                lstLog.Items.Add(computer + " - Welcome to workgroup - " + txtWorkgroupName.Text);
-                            }
-
-                            else
-                            {
-                                string strErrorDescription = " ";
-                                switch (join3)
+                                myDomain1["UserName"] = computer + @"\" + txtLocalAdminUsr.Text;
+                                myDomain1["Name"] = txtWorkgroupName.Text;
+                                myDomain1["FJoinOptions"] = 2;
+                                ManagementBaseObject unjoin1 = n.InvokeMethod("JoinDomainOrWorkgroup", myDomain1, null);
+                                uint join3 = (uint)(unjoin1.Properties["ReturnValue"].Value);
+                                if (join3 == 0)
                                 {
-                                    case 5:
-                                        strErrorDescription = "Access is denied";
-                                        break;
-                                    case 87:
-                                        strErrorDescription = "The parameter is incorrect";
-                                        break;
-                                    case 110:
-                                        strErrorDescription = "The system cannot open the specified object";
-                                        break;
-                                    case 1323:
-                                        strErrorDescription = "Unable to update the password";
-                                        break;
-                                    case 1326:
-                                        strErrorDescription = "Logon failure: unknown username or bad password";
-                                        break;
-                                    case 1355:
-                                        strErrorDescription = "The specified domain either does not exist or could not be contacted";
-                                        break;
-                                    case 2224:
-                                        strErrorDescription = "The account already exists";
-                                        break;
-                                    case 2691:
-                                        strErrorDescription = "The machine is already joined to the domain";
-                                        break;
-                                    case 2692:
-                                        strErrorDescription = "The machine is not currently joined to a domain";
-                                        break;
+                                    this.Invoke(new MethodInvoker(delegate ()
+                                    {
+                                        lstLog.Items.Add(computer + " - Welcome to workgroup - " + txtWorkgroupName.Text);
+                                    }));
+
+                                    //Reboot
+
+                                    ObjectQuery objectQuery = null;
+                                    ManagementObjectSearcher objectSearcher = null;
+
+                                    objectQuery = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
+                                    objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
+                                    foreach (ManagementObject os in objectSearcher.Get())
+
+                                        if (chbReboot.Checked == true)
+                                        {
+                                            ManagementBaseObject outparam = os.InvokeMethod("Reboot", null, null);
+                                        }
+
                                 }
-                                lstLog.Items.Add(computer + " " + strErrorDescription);
-                                return;
+
+                                else
+                                {
+                                    string strErrorDescription = " ";
+                                    switch (join3)
+                                    {
+                                        case 5:
+                                            strErrorDescription = "Access is denied";
+                                            break;
+                                        case 87:
+                                            strErrorDescription = "The parameter is incorrect";
+                                            break;
+                                        case 110:
+                                            strErrorDescription = "The system cannot open the specified object";
+                                            break;
+                                        case 1323:
+                                            strErrorDescription = "Unable to update the password";
+                                            break;
+                                        case 1326:
+                                            strErrorDescription = "Logon failure: unknown username or bad password";
+                                            break;
+                                        case 1355:
+                                            strErrorDescription = "The specified domain either does not exist or could not be contacted";
+                                            break;
+                                        case 2224:
+                                            strErrorDescription = "The account already exists";
+                                            break;
+                                        case 2691:
+                                            strErrorDescription = "The machine is already joined to the domain";
+                                            break;
+                                        case 2692:
+                                            strErrorDescription = "The machine is not currently joined to a domain";
+                                            break;
+                                    }
+                                    this.Invoke(new MethodInvoker(delegate ()
+                                    {
+                                        lstLog.Items.Add(computer + " " + strErrorDescription);
+                                    }));
+                                    return;
+                                }
                             }
+                            
                         }
-                    
 
-
-                        //Reboot
-
-                        ObjectQuery objectQuery = null;
-                        ManagementObjectSearcher objectSearcher = null;
-
-                        objectQuery = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
-                        objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
-                        foreach (ManagementObject os in objectSearcher.Get())
-
-                            if (chbReboot.Checked == true)
+                        catch
+                        {
+                            this.Invoke(new MethodInvoker(delegate ()
                             {
-                                ManagementBaseObject outparam = os.InvokeMethod("Reboot", null, null);
-                            }
-
+                                lstLog.Items.Add(computer + " - WMI connection is NOT success!");
+                            }));
+                        }
+                        
                     }
-
-                    catch
-                    {
-                        lstLog.Items.Add(computer + " - WMI connection is NOT success!");
-                    }
+                    backgroundWorker.ReportProgress(lstRacunara1.Items.Count);
                 }
             }
             else
@@ -264,10 +326,27 @@ namespace Admin_Toolroom
             }
         }
 
-        private void opcijeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            configuration f4 = new configuration();
-            f4.ShowDialog();
+            this.progressBar1.Maximum = lstRacunara1.Items.Count;
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Increment(1);
         }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                MessageBox.Show("Job stopped!", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.progressBar1.Value = 0;
+            }
+            else
+            {
+                MessageBox.Show("Job done!", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.progressBar1.Value = 0;
+            }
+        }
+
+
     }
 }

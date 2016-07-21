@@ -36,6 +36,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chbReboot = new System.Windows.Forms.CheckBox();
             this.btnJoinDomain = new System.Windows.Forms.Button();
             this.txtDomainName = new System.Windows.Forms.TextBox();
             this.txtDomainAdminUser = new System.Windows.Forms.TextBox();
@@ -46,15 +47,17 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDomainOU = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtLocalAdminUsr = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtLocalAdminPwd = new System.Windows.Forms.TextBox();
-            this.chbReboot = new System.Windows.Forms.CheckBox();
             this.lstLog = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnSaveLogs = new System.Windows.Forms.Button();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -70,7 +73,7 @@
             this.lstRacunara1.Location = new System.Drawing.Point(10, 29);
             this.lstRacunara1.Margin = new System.Windows.Forms.Padding(5);
             this.lstRacunara1.Name = "lstRacunara1";
-            this.lstRacunara1.Size = new System.Drawing.Size(214, 264);
+            this.lstRacunara1.Size = new System.Drawing.Size(214, 244);
             this.lstRacunara1.TabIndex = 99;
             // 
             // txtImeRacunara1
@@ -127,7 +130,7 @@
             this.groupBox1.Controls.Add(this.txtImeRacunara1);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(20, 88);
+            this.groupBox1.Location = new System.Drawing.Point(14, 14);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
@@ -141,22 +144,36 @@
             this.groupBox2.Controls.Add(this.lstRacunara1);
             this.groupBox2.Controls.Add(this.btnDelete);
             this.groupBox2.Controls.Add(this.btnEdit);
+            this.groupBox2.Controls.Add(this.chbReboot);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox2.Location = new System.Drawing.Point(20, 214);
+            this.groupBox2.Location = new System.Drawing.Point(14, 140);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox2.Size = new System.Drawing.Size(374, 305);
+            this.groupBox2.Size = new System.Drawing.Size(374, 308);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Computer list";
             // 
+            // chbReboot
+            // 
+            this.chbReboot.AutoSize = true;
+            this.chbReboot.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.chbReboot.Location = new System.Drawing.Point(10, 282);
+            this.chbReboot.Margin = new System.Windows.Forms.Padding(4);
+            this.chbReboot.Name = "chbReboot";
+            this.chbReboot.Size = new System.Drawing.Size(90, 24);
+            this.chbReboot.TabIndex = 3;
+            this.chbReboot.Text = "Reboot";
+            this.chbReboot.UseVisualStyleBackColor = true;
+            // 
             // btnJoinDomain
             // 
-            this.btnJoinDomain.Location = new System.Drawing.Point(636, 377);
+            this.btnJoinDomain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnJoinDomain.Location = new System.Drawing.Point(14, 457);
             this.btnJoinDomain.Margin = new System.Windows.Forms.Padding(4);
             this.btnJoinDomain.Name = "btnJoinDomain";
-            this.btnJoinDomain.Size = new System.Drawing.Size(228, 36);
+            this.btnJoinDomain.Size = new System.Drawing.Size(228, 40);
             this.btnJoinDomain.TabIndex = 4;
             this.btnJoinDomain.Text = "Join to domain";
             this.btnJoinDomain.UseVisualStyleBackColor = false;
@@ -241,7 +258,7 @@
             this.groupBox3.Controls.Add(this.txtDomainAdminPwd);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox3.Location = new System.Drawing.Point(452, 180);
+            this.groupBox3.Location = new System.Drawing.Point(452, 148);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(5);
@@ -280,7 +297,7 @@
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.txtLocalAdminPwd);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox4.Location = new System.Drawing.Point(452, 58);
+            this.groupBox4.Location = new System.Drawing.Point(452, 26);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
@@ -334,44 +351,70 @@
             this.txtLocalAdminPwd.TabIndex = 1;
             this.txtLocalAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
-            // chbReboot
-            // 
-            this.chbReboot.AutoSize = true;
-            this.chbReboot.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.chbReboot.Location = new System.Drawing.Point(499, 383);
-            this.chbReboot.Margin = new System.Windows.Forms.Padding(4);
-            this.chbReboot.Name = "chbReboot";
-            this.chbReboot.Size = new System.Drawing.Size(90, 24);
-            this.chbReboot.TabIndex = 3;
-            this.chbReboot.Text = "Reboot";
-            this.chbReboot.UseVisualStyleBackColor = true;
-            // 
             // lstLog
             // 
             this.lstLog.FormattingEnabled = true;
             this.lstLog.ItemHeight = 20;
-            this.lstLog.Location = new System.Drawing.Point(491, 422);
+            this.lstLog.Location = new System.Drawing.Point(491, 342);
             this.lstLog.Name = "lstLog";
-            this.lstLog.Size = new System.Drawing.Size(446, 104);
+            this.lstLog.Size = new System.Drawing.Size(446, 144);
             this.lstLog.TabIndex = 55;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(446, 431);
+            this.label7.Location = new System.Drawing.Point(454, 398);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 20);
             this.label7.TabIndex = 56;
             this.label7.Text = "log";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnCancel.Location = new System.Drawing.Point(267, 458);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(121, 39);
+            this.btnCancel.TabIndex = 57;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(14, 505);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(374, 16);
+            this.progressBar1.TabIndex = 58;
+            // 
+            // btnSaveLogs
+            // 
+            this.btnSaveLogs.Location = new System.Drawing.Point(830, 492);
+            this.btnSaveLogs.Name = "btnSaveLogs";
+            this.btnSaveLogs.Size = new System.Drawing.Size(107, 30);
+            this.btnSaveLogs.TabIndex = 59;
+            this.btnSaveLogs.Text = "Save Logs";
+            this.btnSaveLogs.UseVisualStyleBackColor = true;
+            this.btnSaveLogs.Click += new System.EventHandler(this.btnSaveLogs_Click);
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
             // Main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 544);
+            this.ClientSize = new System.Drawing.Size(970, 537);
+            this.Controls.Add(this.btnSaveLogs);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lstLog);
-            this.Controls.Add(this.chbReboot);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
@@ -385,6 +428,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -413,7 +457,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDomainOU;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtLocalAdminUsr;
         private System.Windows.Forms.Label label6;
@@ -422,6 +465,10 @@
         private System.Windows.Forms.CheckBox chbReboot;
         private System.Windows.Forms.ListBox lstLog;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button btnSaveLogs;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
 
