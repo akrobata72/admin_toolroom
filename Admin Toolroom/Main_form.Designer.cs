@@ -69,11 +69,11 @@
             this.lstRacunara1.AllowDrop = true;
             this.lstRacunara1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lstRacunara1.FormattingEnabled = true;
-            this.lstRacunara1.ItemHeight = 20;
+            this.lstRacunara1.ItemHeight = 17;
             this.lstRacunara1.Location = new System.Drawing.Point(10, 29);
             this.lstRacunara1.Margin = new System.Windows.Forms.Padding(5);
             this.lstRacunara1.Name = "lstRacunara1";
-            this.lstRacunara1.Size = new System.Drawing.Size(214, 244);
+            this.lstRacunara1.Size = new System.Drawing.Size(214, 242);
             this.lstRacunara1.TabIndex = 99;
             // 
             // txtImeRacunara1
@@ -84,7 +84,7 @@
             this.txtImeRacunara1.Location = new System.Drawing.Point(10, 29);
             this.txtImeRacunara1.Margin = new System.Windows.Forms.Padding(5);
             this.txtImeRacunara1.Name = "txtImeRacunara1";
-            this.txtImeRacunara1.Size = new System.Drawing.Size(214, 27);
+            this.txtImeRacunara1.Size = new System.Drawing.Size(214, 23);
             this.txtImeRacunara1.TabIndex = 0;
             this.txtImeRacunara1.WordWrap = false;
             this.txtImeRacunara1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImeRacunara1_KeyPress);
@@ -162,7 +162,7 @@
             this.chbReboot.Location = new System.Drawing.Point(10, 282);
             this.chbReboot.Margin = new System.Windows.Forms.Padding(4);
             this.chbReboot.Name = "chbReboot";
-            this.chbReboot.Size = new System.Drawing.Size(90, 24);
+            this.chbReboot.Size = new System.Drawing.Size(79, 21);
             this.chbReboot.TabIndex = 3;
             this.chbReboot.Text = "Reboot";
             this.chbReboot.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             this.txtDomainName.Location = new System.Drawing.Point(141, 28);
             this.txtDomainName.Margin = new System.Windows.Forms.Padding(5);
             this.txtDomainName.Name = "txtDomainName";
-            this.txtDomainName.Size = new System.Drawing.Size(320, 27);
+            this.txtDomainName.Size = new System.Drawing.Size(320, 23);
             this.txtDomainName.TabIndex = 0;
             this.txtDomainName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
@@ -199,7 +199,7 @@
             this.txtDomainAdminUser.Location = new System.Drawing.Point(141, 101);
             this.txtDomainAdminUser.Margin = new System.Windows.Forms.Padding(5);
             this.txtDomainAdminUser.Name = "txtDomainAdminUser";
-            this.txtDomainAdminUser.Size = new System.Drawing.Size(320, 27);
+            this.txtDomainAdminUser.Size = new System.Drawing.Size(320, 23);
             this.txtDomainAdminUser.TabIndex = 2;
             this.txtDomainAdminUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
@@ -210,7 +210,7 @@
             this.txtDomainAdminPwd.Margin = new System.Windows.Forms.Padding(5);
             this.txtDomainAdminPwd.Name = "txtDomainAdminPwd";
             this.txtDomainAdminPwd.PasswordChar = '*';
-            this.txtDomainAdminPwd.Size = new System.Drawing.Size(320, 27);
+            this.txtDomainAdminPwd.Size = new System.Drawing.Size(320, 23);
             this.txtDomainAdminPwd.TabIndex = 3;
             this.txtDomainAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
@@ -221,7 +221,7 @@
             this.label1.Location = new System.Drawing.Point(19, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 20);
+            this.label1.Size = new System.Drawing.Size(60, 17);
             this.label1.TabIndex = 19;
             this.label1.Text = "Domain:";
             // 
@@ -232,7 +232,7 @@
             this.label2.Location = new System.Drawing.Point(19, 104);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
+            this.label2.Size = new System.Drawing.Size(42, 17);
             this.label2.TabIndex = 19;
             this.label2.Text = "User:";
             // 
@@ -243,7 +243,7 @@
             this.label3.Location = new System.Drawing.Point(19, 144);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 20);
+            this.label3.Size = new System.Drawing.Size(73, 17);
             this.label3.TabIndex = 20;
             this.label3.Text = "Password:";
             // 
@@ -274,7 +274,7 @@
             this.label4.Location = new System.Drawing.Point(19, 71);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 20);
+            this.label4.Size = new System.Drawing.Size(85, 17);
             this.label4.TabIndex = 20;
             this.label4.Text = "Domain OU:";
             // 
@@ -286,7 +286,7 @@
             this.txtDomainOU.Location = new System.Drawing.Point(141, 68);
             this.txtDomainOU.Margin = new System.Windows.Forms.Padding(5);
             this.txtDomainOU.Name = "txtDomainOU";
-            this.txtDomainOU.Size = new System.Drawing.Size(320, 27);
+            this.txtDomainOU.Size = new System.Drawing.Size(320, 23);
             this.txtDomainOU.TabIndex = 1;
             this.txtDomainOU.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
@@ -314,7 +314,7 @@
             this.txtLocalAdminUsr.Location = new System.Drawing.Point(140, 42);
             this.txtLocalAdminUsr.Margin = new System.Windows.Forms.Padding(5);
             this.txtLocalAdminUsr.Name = "txtLocalAdminUsr";
-            this.txtLocalAdminUsr.Size = new System.Drawing.Size(320, 27);
+            this.txtLocalAdminUsr.Size = new System.Drawing.Size(320, 23);
             this.txtLocalAdminUsr.TabIndex = 0;
             this.txtLocalAdminUsr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
@@ -325,7 +325,7 @@
             this.label6.Location = new System.Drawing.Point(19, 45);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 20);
+            this.label6.Size = new System.Drawing.Size(42, 17);
             this.label6.TabIndex = 17;
             this.label6.Text = "User:";
             // 
@@ -336,7 +336,7 @@
             this.label5.Location = new System.Drawing.Point(19, 81);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 20);
+            this.label5.Size = new System.Drawing.Size(73, 17);
             this.label5.TabIndex = 18;
             this.label5.Text = "Password:";
             // 
@@ -347,17 +347,17 @@
             this.txtLocalAdminPwd.Margin = new System.Windows.Forms.Padding(5);
             this.txtLocalAdminPwd.Name = "txtLocalAdminPwd";
             this.txtLocalAdminPwd.PasswordChar = '*';
-            this.txtLocalAdminPwd.Size = new System.Drawing.Size(320, 27);
+            this.txtLocalAdminPwd.Size = new System.Drawing.Size(320, 23);
             this.txtLocalAdminPwd.TabIndex = 1;
             this.txtLocalAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterBtnJoinDomain_KeyPress);
             // 
             // lstLog
             // 
             this.lstLog.FormattingEnabled = true;
-            this.lstLog.ItemHeight = 20;
+            this.lstLog.ItemHeight = 16;
             this.lstLog.Location = new System.Drawing.Point(491, 342);
             this.lstLog.Name = "lstLog";
-            this.lstLog.Size = new System.Drawing.Size(446, 144);
+            this.lstLog.Size = new System.Drawing.Size(446, 132);
             this.lstLog.TabIndex = 55;
             // 
             // label7
@@ -365,7 +365,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(454, 398);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 20);
+            this.label7.Size = new System.Drawing.Size(27, 17);
             this.label7.TabIndex = 56;
             this.label7.Text = "log";
             // 
@@ -407,7 +407,7 @@
             // 
             // Main_form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 537);
             this.Controls.Add(this.btnSaveLogs);
@@ -424,7 +424,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Main_form";
-            this.Text = "Join computer to domain";
+            this.Text = "2.0.2 Admin Toolroom - Join computer to domain";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

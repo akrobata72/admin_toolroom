@@ -25,6 +25,8 @@ namespace Admin_Toolroom
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
             //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
             this.txtDomainOU.Text = Properties.Settings.Default.sDomainOU;
+            string version = Application.ProductVersion;
+            this.Text = String.Format("Admin Toolroom {0}" + " - " + "JOIN COMPUTER TO DOMAIN", version);
 
             this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
             this.txtLocalAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sLocAdminPwd));
@@ -239,7 +241,7 @@ namespace Admin_Toolroom
                             }
                         }
 
-                        
+
                     }
 
                     catch

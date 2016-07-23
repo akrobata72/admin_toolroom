@@ -24,6 +24,8 @@ namespace Admin_Toolroom
             this.txtWorkgroupName.Text = Properties.Settings.Default.sWorkgroupName;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
             //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+            string version = Application.ProductVersion;
+            this.Text = String.Format("Admin Toolroom {0}" + " - " + "UNJOIN COMPUTER FROM DOMAIN", version);
 
             this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
             this.txtLocalAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sLocAdminPwd));

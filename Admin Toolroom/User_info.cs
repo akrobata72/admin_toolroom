@@ -24,6 +24,8 @@ namespace Admin_Toolroom
             //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
             this.txtLDAP.Text = Properties.Settings.Default.sUserDomainOU;
             this.txtDC.Text = Properties.Settings.Default.sDC;
+            string version = Application.ProductVersion;
+            this.Text = String.Format("Admin Toolroom {0}" + " - " + "DOMAIN USER INFO", version);
 
             this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
 
@@ -47,8 +49,8 @@ namespace Admin_Toolroom
             de.Username = txtDomainAdminUser.Text;
             de.Password = txtDomainAdminPwd.Text;
             de.AuthenticationType = AuthenticationTypes.Secure;
-            
-            
+
+
             DirectorySearcher ds = new DirectorySearcher(de);
             ds.SearchScope = SearchScope.Subtree;
             ds.Filter = "(&(objectCategory=User) (samAccountName=" + "*" + txtSearch.Text + "*" + "))";
@@ -271,7 +273,7 @@ namespace Admin_Toolroom
 
         private void unlockAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
-  
+
             if (lstResults.SelectedItem==null)
             {
                 MessageBox.Show(this, "Select user first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -303,7 +305,7 @@ namespace Admin_Toolroom
                 string pwd = txtDomainAdminPwd.Text;
                 string domain = txtDomainName.Text;
                 string admin = txtDomainAdminUser.Text;
-                            
+
 
             Chg_pass frm = new Chg_pass(l, dc, pwd, domain,admin);
             frm.Show();
@@ -337,5 +339,5 @@ namespace Admin_Toolroom
         }
     }
     }
-       
+
 

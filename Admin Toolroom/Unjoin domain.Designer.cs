@@ -72,7 +72,7 @@
             this.txtImeRacunara1.Location = new System.Drawing.Point(10, 31);
             this.txtImeRacunara1.Margin = new System.Windows.Forms.Padding(4);
             this.txtImeRacunara1.Name = "txtImeRacunara1";
-            this.txtImeRacunara1.Size = new System.Drawing.Size(214, 26);
+            this.txtImeRacunara1.Size = new System.Drawing.Size(214, 23);
             this.txtImeRacunara1.TabIndex = 0;
             this.txtImeRacunara1.WordWrap = false;
             this.txtImeRacunara1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImeRacunara1_KeyPress);
@@ -109,7 +109,7 @@
             this.lstRacunara1.AllowDrop = true;
             this.lstRacunara1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lstRacunara1.FormattingEnabled = true;
-            this.lstRacunara1.ItemHeight = 20;
+            this.lstRacunara1.ItemHeight = 16;
             this.lstRacunara1.Location = new System.Drawing.Point(10, 29);
             this.lstRacunara1.Margin = new System.Windows.Forms.Padding(4);
             this.lstRacunara1.Name = "lstRacunara1";
@@ -148,7 +148,7 @@
             this.txtDomainName.Location = new System.Drawing.Point(122, 37);
             this.txtDomainName.Margin = new System.Windows.Forms.Padding(4);
             this.txtDomainName.Name = "txtDomainName";
-            this.txtDomainName.Size = new System.Drawing.Size(365, 26);
+            this.txtDomainName.Size = new System.Drawing.Size(365, 23);
             this.txtDomainName.TabIndex = 0;
             this.txtDomainName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
@@ -159,7 +159,7 @@
             this.label1.Location = new System.Drawing.Point(16, 40);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 20);
+            this.label1.Size = new System.Drawing.Size(60, 17);
             this.label1.TabIndex = 19;
             this.label1.Text = "Domain:";
             // 
@@ -169,7 +169,7 @@
             this.chbReboot.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.chbReboot.Location = new System.Drawing.Point(10, 276);
             this.chbReboot.Name = "chbReboot";
-            this.chbReboot.Size = new System.Drawing.Size(90, 24);
+            this.chbReboot.Size = new System.Drawing.Size(79, 21);
             this.chbReboot.TabIndex = 5;
             this.chbReboot.Text = "Reboot";
             this.chbReboot.UseVisualStyleBackColor = true;
@@ -210,7 +210,7 @@
             this.txtWorkgroupName.Location = new System.Drawing.Point(122, 44);
             this.txtWorkgroupName.Margin = new System.Windows.Forms.Padding(4);
             this.txtWorkgroupName.Name = "txtWorkgroupName";
-            this.txtWorkgroupName.Size = new System.Drawing.Size(365, 26);
+            this.txtWorkgroupName.Size = new System.Drawing.Size(365, 23);
             this.txtWorkgroupName.TabIndex = 0;
             this.txtWorkgroupName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
@@ -221,7 +221,7 @@
             this.label2.Location = new System.Drawing.Point(16, 47);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 20);
+            this.label2.Size = new System.Drawing.Size(82, 17);
             this.label2.TabIndex = 21;
             this.label2.Text = "Workgroup:";
             // 
@@ -233,7 +233,7 @@
             this.txtLocalAdminUsr.Location = new System.Drawing.Point(121, 79);
             this.txtLocalAdminUsr.Margin = new System.Windows.Forms.Padding(4);
             this.txtLocalAdminUsr.Name = "txtLocalAdminUsr";
-            this.txtLocalAdminUsr.Size = new System.Drawing.Size(365, 26);
+            this.txtLocalAdminUsr.Size = new System.Drawing.Size(365, 23);
             this.txtLocalAdminUsr.TabIndex = 1;
             this.txtLocalAdminUsr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
@@ -244,7 +244,7 @@
             this.label6.Location = new System.Drawing.Point(16, 82);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 20);
+            this.label6.Size = new System.Drawing.Size(42, 17);
             this.label6.TabIndex = 17;
             this.label6.Text = "User:";
             // 
@@ -255,7 +255,7 @@
             this.label5.Location = new System.Drawing.Point(16, 118);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 20);
+            this.label5.Size = new System.Drawing.Size(73, 17);
             this.label5.TabIndex = 18;
             this.label5.Text = "Password:";
             // 
@@ -266,7 +266,7 @@
             this.txtLocalAdminPwd.Margin = new System.Windows.Forms.Padding(4);
             this.txtLocalAdminPwd.Name = "txtLocalAdminPwd";
             this.txtLocalAdminPwd.PasswordChar = '*';
-            this.txtLocalAdminPwd.Size = new System.Drawing.Size(365, 26);
+            this.txtLocalAdminPwd.Size = new System.Drawing.Size(365, 23);
             this.txtLocalAdminPwd.TabIndex = 2;
             this.txtLocalAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
@@ -294,7 +294,7 @@
             this.txtDomainAdminUser.Location = new System.Drawing.Point(122, 73);
             this.txtDomainAdminUser.Margin = new System.Windows.Forms.Padding(4);
             this.txtDomainAdminUser.Name = "txtDomainAdminUser";
-            this.txtDomainAdminUser.Size = new System.Drawing.Size(365, 26);
+            this.txtDomainAdminUser.Size = new System.Drawing.Size(365, 23);
             this.txtDomainAdminUser.TabIndex = 1;
             this.txtDomainAdminUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
@@ -305,7 +305,7 @@
             this.label3.Location = new System.Drawing.Point(16, 76);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 20);
+            this.label3.Size = new System.Drawing.Size(42, 17);
             this.label3.TabIndex = 112;
             this.label3.Text = "User:";
             // 
@@ -316,7 +316,7 @@
             this.label4.Location = new System.Drawing.Point(16, 112);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 20);
+            this.label4.Size = new System.Drawing.Size(73, 17);
             this.label4.TabIndex = 113;
             this.label4.Text = "Password:";
             // 
@@ -327,7 +327,7 @@
             this.txtDomainAdminPwd.Margin = new System.Windows.Forms.Padding(4);
             this.txtDomainAdminPwd.Name = "txtDomainAdminPwd";
             this.txtDomainAdminPwd.PasswordChar = '*';
-            this.txtDomainAdminPwd.Size = new System.Drawing.Size(365, 26);
+            this.txtDomainAdminPwd.Size = new System.Drawing.Size(365, 23);
             this.txtDomainAdminPwd.TabIndex = 2;
             this.txtDomainAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterbtnUnjoin_KeyPress);
             // 
@@ -353,17 +353,17 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(432, 421);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 20);
+            this.label7.Size = new System.Drawing.Size(27, 17);
             this.label7.TabIndex = 116;
             this.label7.Text = "log";
             // 
             // lstLog
             // 
             this.lstLog.FormattingEnabled = true;
-            this.lstLog.ItemHeight = 20;
+            this.lstLog.ItemHeight = 16;
             this.lstLog.Location = new System.Drawing.Point(475, 357);
             this.lstLog.Name = "lstLog";
-            this.lstLog.Size = new System.Drawing.Size(446, 144);
+            this.lstLog.Size = new System.Drawing.Size(446, 132);
             this.lstLog.TabIndex = 115;
             // 
             // btnCancel
@@ -405,7 +405,7 @@
             // 
             // Unjoin_domain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 543);
             this.Controls.Add(this.progressBar1);
@@ -421,7 +421,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Unjoin_domain";
-            this.Text = "2.0.1 Admin Toolroom - Unjoin computer from domain";
+            this.Text = "2.0.2 Admin Toolroom - Unjoin computer from domain";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);

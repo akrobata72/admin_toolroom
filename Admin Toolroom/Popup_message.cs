@@ -23,6 +23,8 @@ namespace Admin_Toolroom
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
             //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+            string version = Application.ProductVersion;
+            this.Text = String.Format("Admin Toolroom {0}" + " - " + "SEND POPUP MESSAGE", version);
 
             this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
 
