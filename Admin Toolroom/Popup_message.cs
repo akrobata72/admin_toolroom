@@ -20,12 +20,14 @@ namespace Admin_Toolroom
         public Popup_message()
         {
             InitializeComponent();
+            //load settings
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
             //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+            //set form name
             string version = Application.ProductVersion;
             this.Text = String.Format("Admin Toolroom {0}" + " - " + "SEND POPUP MESSAGE", version);
-
+            //decode and load password
             this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
 
 

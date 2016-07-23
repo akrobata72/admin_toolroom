@@ -19,12 +19,14 @@ namespace Admin_Toolroom
         {
 
             InitializeComponent();
+            //load settings
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtLocalAdminUsr.Text = Properties.Settings.Default.sLocAdminName;
             //this.txtLocalAdminPwd.Text = Properties.Settings.Default.sLocAdminPwd;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
             //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
             this.txtDomainOU.Text = Properties.Settings.Default.sDomainOU;
+            //set form name
             string version = Application.ProductVersion;
             this.Text = String.Format("Admin Toolroom {0}" + " - " + "JOIN COMPUTER TO DOMAIN", version);
 

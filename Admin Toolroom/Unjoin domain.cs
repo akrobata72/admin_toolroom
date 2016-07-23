@@ -18,15 +18,17 @@ namespace Admin_Toolroom
         public Unjoin_domain()
         {
             InitializeComponent();
+            //load settings
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtLocalAdminUsr.Text = Properties.Settings.Default.sLocAdminName;
             //this.txtLocalAdminPwd.Text = Properties.Settings.Default.sLocAdminPwd;
             this.txtWorkgroupName.Text = Properties.Settings.Default.sWorkgroupName;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
             //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
+            //set form name
             string version = Application.ProductVersion;
             this.Text = String.Format("Admin Toolroom {0}" + " - " + "UNJOIN COMPUTER FROM DOMAIN", version);
-
+            //decode and load password
             this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
             this.txtLocalAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sLocAdminPwd));
 
@@ -111,7 +113,7 @@ namespace Admin_Toolroom
             f4.ShowDialog();
         }
 
- 
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -307,7 +309,7 @@ namespace Admin_Toolroom
                                     return;
                                 }
                             }
-                            
+
                         }
 
                         catch
@@ -317,7 +319,7 @@ namespace Admin_Toolroom
                                 lstLog.Items.Add(computer + " - WMI connection is NOT success!");
                             }));
                         }
-                        
+
                     }
                     backgroundWorker.ReportProgress(lstRacunara1.Items.Count);
                 }

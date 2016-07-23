@@ -19,14 +19,16 @@ namespace Admin_Toolroom
         public User_info()
         {
             InitializeComponent();
+            //load settings
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtDomainAdminUser.Text = Properties.Settings.Default.sDomUsrName;
             //this.txtDomainAdminPwd.Text = Properties.Settings.Default.sDomUsrPwd;
             this.txtLDAP.Text = Properties.Settings.Default.sUserDomainOU;
             this.txtDC.Text = Properties.Settings.Default.sDC;
+            //set form name
             string version = Application.ProductVersion;
             this.Text = String.Format("Admin Toolroom {0}" + " - " + "DOMAIN USER INFO", version);
-
+            //decode and load password
             this.txtDomainAdminPwd.Text = Encoding.Unicode.GetString(Convert.FromBase64String(Properties.Settings.Default.sDomUsrPwd));
 
 

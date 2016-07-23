@@ -16,6 +16,7 @@ namespace Admin_Toolroom
         public RDPViewer()
         {
             InitializeComponent();
+            //set form name
             string version = Application.ProductVersion;
             this.Text = String.Format("Admin Toolroom {0}" + " - " + "REMOTE ASSISTANCE CLIENT", version);
 

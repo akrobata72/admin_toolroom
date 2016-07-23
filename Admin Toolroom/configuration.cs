@@ -16,10 +16,11 @@ namespace Admin_Toolroom
     public partial class configuration : Form
     {
 
-        
+
         public configuration()
         {
             InitializeComponent();
+            //load settings
             this.txtDomainName.Text = Properties.Settings.Default.sDomainName;
             this.txtLocalAdminUsr.Text = Properties.Settings.Default.sLocAdminName;
             //this.txtLocalAdminPwd.Text = Properties.Settings.Default.sLocAdminPwd;
@@ -35,12 +36,16 @@ namespace Admin_Toolroom
             this.txtDC.Text = Properties.Settings.Default.sDC;
             this.txtDefaultPassword.Text = Properties.Settings.Default.sDefaultPassword;
             this.txtUserDomainOU.Text = Properties.Settings.Default.sUserDomainOU;
+
+            //set form name
+            string version = Application.ProductVersion;
+            this.Text = String.Format("Admin Toolroom {0}" + " - " + "APPLICATION SETTINGS", version);
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
             {
-                                
+
                 Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
                 Properties.Settings.Default.sDomUsrPwd = Convert.ToBase64String(Encoding.Unicode.GetBytes(txtDomainAdminPwd.Text));
