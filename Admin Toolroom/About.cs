@@ -17,5 +17,7 @@ namespace Admin_Toolroom
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             this.lblVersion.Text = String.Format("Program version: {0}", version);
         }
+
+ 
     }
 }

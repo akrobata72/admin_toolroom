@@ -42,7 +42,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(176, 17);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Release date: 21.07.2016.";
+            this.label3.Text = "Release date: 27.07.2016.";
             // 
             // lblVersion
             // 

@@ -42,6 +42,7 @@ namespace Admin_Toolroom
         private void button2_Click(object sender, EventArgs e)
         {
             axRDPViewer1.Disconnect();
+            textBox1.Text = "";
             this.Refresh();
         }
 

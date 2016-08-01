@@ -67,6 +67,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(270, 22);
             this.textBox1.TabIndex = 1;
+            this.textBox1.WordWrap = false;
             // 
             // panel1
             // 
@@ -93,6 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(549, 494);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
