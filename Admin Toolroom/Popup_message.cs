@@ -303,17 +303,44 @@ namespace Admin_Toolroom
 
         private void btnSaveLogs_Click(object sender, EventArgs e)
         {
-            if (lstRacunara1.Items.Count > 0)
+            string dateTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "Firga", "Admin Toolroom", "Logs");
+            string logFile = path + @"\SendMsgLog" + dateTime + ".txt";
+            if (Directory.Exists(path))
             {
-                using (TextWriter TW = new StreamWriter("SendMsgLog.txt"))
+                if (lstRacunara1.Items.Count > 0)
                 {
-                    foreach (string LstText in lstLog.Items)
+                    using (TextWriter TW = new StreamWriter(logFile))
                     {
-                        TW.WriteLine(LstText);
-                    }
-                }
+                        TW.WriteLine("Message Body:");
+                        TW.WriteLine(txtPopupMsg.Text);
+                        TW.WriteLine("");
 
-                Process.Start("SendMsgLog.txt");
+                        foreach (string LstText in lstLog.Items)
+                        {
+                            TW.WriteLine(LstText);
+                        }
+                    }
+
+                    Process.Start(logFile);
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(path);
+
+                if (lstRacunara1.Items.Count > 0)
+                {
+                    using (TextWriter TW = new StreamWriter(logFile))
+                    {
+                        foreach (string LstText in lstLog.Items)
+                        {
+                            TW.WriteLine(LstText);
+                        }
+                    }
+
+                    Process.Start(logFile);
+                }
             }
         }
 
